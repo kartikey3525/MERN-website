@@ -10,7 +10,7 @@ export const Navbar = () => {
       <header>
         <div className="container">
           <div className="logo-brand">
-            <NavLink to="/">ThapaTechnical</NavLink>
+            <NavLink to="/">Snappy Services</NavLink>
           </div>
 
           <nav>
@@ -22,7 +22,7 @@ export const Navbar = () => {
                 <NavLink to="/about"> About </NavLink>
               </li>
               <li>
-                <NavLink to="/service"> Services </NavLink>
+                <NavLink to="/services"> Services </NavLink>
               </li>
               <li>
                 <NavLink to="/contact"> Contact </NavLink>

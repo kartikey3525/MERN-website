@@ -43,8 +43,8 @@ userSchema.methods.generateToken = function() {
                 email: this.email,
                 isAdmin: this.isAdmin,
             },
-            'your_jwt_secret_key', // Replace with your actual secret key
-            { expiresIn: '1h' } // Optional: token expiration time
+            process.env.JWT_SECRET_KEY, // Replace with your actual secret key
+            { expiresIn: '30d' } // Optional: token expiration time
         );
     } catch (error) {
         console.error(error);

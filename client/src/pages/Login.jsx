@@ -8,7 +8,7 @@ export const Login = () => {
     password: "",
   });
 
-  const { saveTokenInLocalStr } = useAuth();
+  const { storeTokenInLS } = useAuth();
 
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ export const Login = () => {
         const responseData = await response.json();
         console.log("after login: ", responseData);
         // toast.success("Registration Successful");
-        saveTokenInLocalStr(responseData.token);
+        storeTokenInLS(responseData.token);
         navigate("/");
       }
     } catch (error) {
@@ -63,7 +63,7 @@ export const Login = () => {
               </div>
               {/* our main registration code  */}
               <div className="registration-form">
-                <h1 className="main-heading mb-3">registration form</h1>
+                <h1 className="main-heading mb-3">login form</h1>
                 <br />
                 <form onSubmit={handleSubmit}>
                   <div>
@@ -89,7 +89,7 @@ export const Login = () => {
                   </div>
                   <br />
                   <button type="submit" className="btn btn-submit">
-                    Register Now
+                    Login Now
                   </button>
                 </form>
               </div>

@@ -5,6 +5,7 @@ const contactRoute = require('./router/contact-route');
 const connectDb = require('./utils/db');
 const errorMiddleware = require('./middlewares/error-middleware');
 const cors = require("cors");
+const serviceRoute = require('./router/service-router');
 
 require("dotenv").config();     
 
@@ -25,6 +26,8 @@ app.use(errorMiddleware)
 
 app.use('/api/auth', authRoute)
 app.use('/api/form', contactRoute)
+app.use('/api/data', serviceRoute)
+
  
 
 connectDb().then(() => {

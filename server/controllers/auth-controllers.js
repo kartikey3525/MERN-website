@@ -35,8 +35,6 @@ const register = async (req, res) => {
 };
 
 
-
-
 const login = async (req, res) => {
     try {
         console.log('Login Request Body:', req.body);
@@ -55,7 +53,7 @@ const login = async (req, res) => {
         if (isPassValid) {
             const token = userExist.generateToken();
             res.status(200).json({ data: userExist, token: token });
-            console.log("Login successful");
+            console.log("Login successful", token);
         } else {
             console.log("Password is invalid");
             return res.status(401).json({ msg: 'Invalid email or password' });
@@ -66,6 +64,18 @@ const login = async (req, res) => {
     }
 };
 
+// User Logic
+// *-------------------
 
+const user = async (req, res) => {
+    try {
+        // const userData = await User.find({});
+        const userData = req.user;
+        // console.log(userData);
+        return res.status(200).json({ msg: userData });
+    } catch (error) {
+        console.log(` error from user route ${error}`);
+    }
+};
 
-module.exports = { home, register, login };
+module.exports = { home, register, login, user };

@@ -18,7 +18,7 @@ const register = async (req, res) => {
         const userExist = await User.findOne({ email: email });
 
         if (userExist) {
-            return res.status(409).json({ msg: 'User already exists' });
+            return res.status(409).json({ message: 'Email already exists' });
         }
 
         const userCreated = new User({ username, email, phone, password });
@@ -44,7 +44,7 @@ const login = async (req, res) => {
 
         if (!userExist) {
             console.log("User does not exist");
-            return res.status(400).json({ msg: 'Invalid email or password' });
+            return res.status(400).json({ message: 'Invalid email or password' });
         }
  
         // Verify the password

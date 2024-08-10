@@ -22,13 +22,11 @@ app.use(cors(corsOptions));
 
 // to get the json data in express app.
 app.use(express.json()); 
-app.use(errorMiddleware)
 
 app.use('/api/auth', authRoute)
 app.use('/api/form', contactRoute)
 app.use('/api/data', serviceRoute)
-
- 
+app.use(errorMiddleware)
 
 connectDb().then(() => {
     

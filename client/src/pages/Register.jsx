@@ -22,10 +22,8 @@ export const Register = () => {
   // handle form on submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user,'before try ');
 
     try {
-
       const response = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
         headers: {
@@ -33,25 +31,26 @@ export const Register = () => {
         },
         body: JSON.stringify(user),
       });
-      
-      console.log("response data : ", response);
+
+      const responseData = await response.json(); // Await the JSON parsing
 
       if (response.ok) {
-        const responseData = await response.json();
-        alert("registration successful");
+        alert("Registration successful");
         setUser({ username: "", email: "", phone: "", password: "" });
         console.log(responseData);
       } else {
-        console.log("error inside response ", "error");
+        alert(
+          responseData.extraDetails
+            ? responseData.extraDetails
+            : responseData.message
+        );
+        console.log(responseData); // Log the actual response object
       }
-      console.log(user,'inside try catch');
-
     } catch (error) {
       console.error("Error", error);
     }
-    console.log(user,'after try ');
-
   };
+  
 
   return (
     <>

@@ -1,13 +1,17 @@
 const errorMiddleware = (err, req, res, next) => {
   const status = err.status || 500;
-  const message = err.message || "Backend Error";
-  const extraDetails = err.extraDetails || "Error from the Backend";
+  const message = err.message || 'Internal Server Error';
+  const extraDetails = err.extraDetails || 'Internal Server Error';
+
+  res.status(status).json({
+    status,
+    message,
+    extraDetails,
+  });
 
   console.error(
-    `[${req.method}]  ${req.path} >> StatusCode:: ${status}, Message:: ${extraDetails} `
+    `[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}, ExtraDetails:: ${extraDetails}`
   );
-
-  return res.status(status).json({ message, extraDetails });
 };
 
 module.exports = errorMiddleware;

@@ -35,12 +35,18 @@ export const Login = () => {
         body: JSON.stringify(user),
       });
 
+      const responseData = await response.json();
       if (response.ok) {
-        const responseData = await response.json();
         console.log("after login: ", responseData);
         // toast.success("Registration Successful");
         storeTokenInLS(responseData.token);
         navigate("/");
+      } else {
+        alert(
+          responseData.extraDetails
+            ? responseData.extraDetails
+            : responseData.message
+        );
       }
     } catch (error) {
       console.log(error);

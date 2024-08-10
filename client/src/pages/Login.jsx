@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -40,11 +41,12 @@ export const Login = () => {
         console.log("after login: ", responseData);
         // toast.success("Registration Successful");
         storeTokenInLS(responseData.token);
+        toast.success("Login successful");
         navigate("/");
       } else {
-        alert(
+        toast.error(
           responseData.extraDetails
-            ? responseData.extraDetails
+            ? responseData.extraDetails[0]
             : responseData.message
         );
       }

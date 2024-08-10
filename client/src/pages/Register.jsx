@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -35,13 +36,13 @@ export const Register = () => {
       const responseData = await response.json(); // Await the JSON parsing
 
       if (response.ok) {
-        alert("Registration successful");
+        toast.success("Registration successful");
         setUser({ username: "", email: "", phone: "", password: "" });
         console.log(responseData);
       } else {
-        alert(
+        toast.error(
           responseData.extraDetails
-            ? responseData.extraDetails
+            ? responseData.extraDetails[0]
             : responseData.message
         );
         console.log(responseData); // Log the actual response object
@@ -50,7 +51,6 @@ export const Register = () => {
       console.error("Error", error);
     }
   };
-  
 
   return (
     <>

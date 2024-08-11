@@ -4,6 +4,10 @@
  
 ## Description
 
+This website is built using the MERN stack (MongoDB, Express, Node.js, React.js) and is designed to be fully device-responsive. It features JWT authentication for secure user registration, login, and logout, ensuring data protection and personalized user experiences.
+
+The site highlights the firm’s dedication to customer satisfaction, showcasing an overview of the company’s work ethics and values. Key pages include:
+
 Service Offerings: A dedicated services page that provides detailed information about each service offered by the firm, including descriptions, pricing, and provider details.
 
 About Page: An in-depth look at the firm’s history, mission, and testimonials from satisfied customers.

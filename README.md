@@ -20,9 +20,20 @@ Validation and User Experience: Comprehensive validation is implemented across a
 
 This website is designed to not only provide valuable information about the firm but also to engage visitors through an intuitive interface and seamless functionality.
 
-- [Installation]:
-  
-you need an latest react native cli enviroment to run this app , then just go to the root of the app and run these cmd in 1 terminal 'cd server' and 'nodemon server.js' ,
-then open 2 terminal and run 'cd client' and 'npm run dev' and click on link in this terminal while pressing ctlr to redirect to the site on your web browser .
-  
+Installation :
+
+To run this app, follow these steps:
+
+Ensure you have the latest React Native CLI environment installed.
+Open a terminal and navigate to the root directory of the app.
+
+1. Start the server:
+cd server
+nodemon server.js
+
+2. Open a second terminal and start the client: 
+cd client
+npm run dev
+
+In the terminal where the client is running, press Ctrl and click the link provided to open the site in your web browser.
  

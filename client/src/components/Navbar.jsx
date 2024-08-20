@@ -5,6 +5,7 @@ import { useAuth } from "../store/auth";
 export const Navbar = () => {
   const { isLoggedIn } = useAuth();
   console.log("login or not ", isLoggedIn);
+
   return (
     <>
       <header>
@@ -16,29 +17,42 @@ export const Navbar = () => {
           <nav>
             <ul>
               <li>
-                <NavLink to="/"> Home </NavLink>
+                <NavLink exact to="/" activeClassName="active">
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/services"> Services </NavLink>
+                <NavLink to="/services" activeClassName="active">
+                  Services
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/contact"> Contact </NavLink>
+                <NavLink to="/contact" activeClassName="active">
+                  Contact
+                </NavLink>
               </li>
-
               <li>
-                <NavLink to="/about"> About </NavLink>
+                <NavLink to="/about" activeClassName="active">
+                  About
+                </NavLink>
               </li>
               {isLoggedIn ? (
                 <li>
-                  <NavLink to="/logout">Logout</NavLink>
+                  <NavLink to="/logout" activeClassName="active">
+                    Logout
+                  </NavLink>
                 </li>
               ) : (
                 <>
                   <li>
-                    <NavLink to="/register"> Register </NavLink>
+                    <NavLink to="/register" activeClassName="active">
+                      Register
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/login"> Login </NavLink>
+                    <NavLink to="/login" activeClassName="active">
+                      Login
+                    </NavLink>
                   </li>
                 </>
               )}

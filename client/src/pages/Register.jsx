@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -51,6 +52,38 @@ export const Register = () => {
       console.error("Error", error);
     }
   };
+  const ContentRef = useRef();
+  const ImageRef = useRef();
+
+  useEffect(() => {
+    const options = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    }, options);
+
+    const elementsToAnimate = [ContentRef.current, ImageRef.current];
+
+    elementsToAnimate.forEach((element) => {
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      elementsToAnimate.forEach((element) => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
 
   return (
     <>
@@ -58,7 +91,10 @@ export const Register = () => {
         <main>
           <div className="section-registration">
             <div className="container grid grid-two-cols">
-              <div className="registration-image reg-img">
+              <div
+                className="registration-image reg-img animate-left"
+                ref={ImageRef}
+              >
                 <img
                   src="/images/register.png"
                   alt="a nurse with a cute look"
@@ -67,7 +103,7 @@ export const Register = () => {
                 />
               </div>
               {/* our main registration code  */}
-              <div className="registration-form">
+              <div ref={ContentRef} className="registration-form animate-right">
                 <h1 className="main-heading mb-3">registration form</h1>
                 <br />
                 <form onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
@@ -10,10 +10,8 @@ export const Login = () => {
   });
 
   const { storeTokenInLS } = useAuth();
-
   const navigate = useNavigate();
 
-  // let handle the input field value
   const handleInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -24,7 +22,6 @@ export const Login = () => {
     });
   };
 
-  // let handle the form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -39,7 +36,6 @@ export const Login = () => {
       const responseData = await response.json();
       if (response.ok) {
         console.log("after login: ", responseData);
-        // toast.success("Registration Successful");
         storeTokenInLS(responseData.token);
         toast.success("Login successful");
         navigate("/");
@@ -55,44 +51,82 @@ export const Login = () => {
     }
   };
 
+  const ContentRef = useRef();
+  const ImageRef = useRef();
+
+  useEffect(() => {
+    const options = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    }, options);
+
+    const elementsToAnimate = [ContentRef.current, ImageRef.current];
+
+    elementsToAnimate.forEach((element) => {
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      elementsToAnimate.forEach((element) => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
+
   return (
     <>
       <section>
         <main>
           <div className="section-registration">
             <div className="container grid grid-two-cols">
-              <div className="registration-image reg-img">
+              <div
+                className="registration-image reg-img animate-left"
+                ref={ImageRef}
+              >
                 <img
-                  src="/images/register.png"
+                  src="/images/login.png"
                   alt="a nurse with a cute look"
                   width="400"
                   height="500"
                 />
               </div>
-              {/* our main registration code  */}
-              <div className="registration-form">
-                <h1 className="main-heading mb-3">login form</h1>
+              {/* Main registration form */}
+              <div ref={ContentRef} className="registration-form animate-right">
+                <h1 className="main-heading mb-3">Login Form</h1>
                 <br />
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="email">email</label>
+                    <label htmlFor="email">Email</label>
                     <input
                       type="text"
                       name="email"
                       value={user.email}
                       onChange={handleInput}
-                      placeholder="email"
+                      placeholder="Email"
+                      required
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                       type="password"
                       name="password"
                       value={user.password}
                       onChange={handleInput}
-                      placeholder="password"
+                      placeholder="Password"
+                      required
                     />
                   </div>
                   <br />

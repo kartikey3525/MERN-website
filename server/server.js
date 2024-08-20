@@ -14,7 +14,7 @@ const PORT = 5000;
 connectDb();
 // 127.0.0.1 localhost
 const corsOptions = {
-  origin: 'http://127.0.0.1:5173',
+  origin: 'http://localhost:5173',
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };

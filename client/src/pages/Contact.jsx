@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../store/auth";
 
 const defaultContactFormData = {
@@ -12,8 +12,8 @@ export const Contact = () => {
   const { user } = useAuth();
 
   useEffect(() => {
+    console.log("user", user);
     if (user) {
-      // console.log("Setting user data: ", user);
       setData({
         username: user.username || "",
         email: user.email || "",
@@ -21,6 +21,39 @@ export const Contact = () => {
       });
     }
   }, [user]);
+
+  const ContentRef = useRef();
+  const ImageRef = useRef();
+
+  useEffect(() => {
+    const options = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    }, options);
+
+    const elementsToAnimate = [ContentRef.current, ImageRef.current];
+
+    elementsToAnimate.forEach((element) => {
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      elementsToAnimate.forEach((element) => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -39,36 +72,33 @@ export const Contact = () => {
         body: JSON.stringify(data),
       });
 
-      // console.log("response: ", response);
-      // alert(response);
-
       if (response.ok) {
         setData(defaultContactFormData);
         const responseData = await response.json();
-        alert(responseData);
+        alert(responseData.message);
         console.log(responseData);
       } else {
-        // Handle API error here
         console.error("API Error:", response.status, response.statusText);
       }
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <>
       <section className="section-contact">
         <div className="contact-content container">
-          <h1 className="main-heading">contact us</h1>
+          <h1 className="main-heading">Contact Us</h1>
         </div>
         <div className="container grid grid-two-cols">
-          <div className="contact-img">
-            <img src="/images/support.png" alt="we are always ready to help" />
+          <div className="contact-img animate-left" ref={ImageRef}>
+            <img src="/images/support.png" alt="We are always ready to help" />
           </div>
-          <section className="section-form">
+          <section ref={ContentRef} className="section-form animate-right">
             <form onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="username">username</label>
+                <label htmlFor="username">Username</label>
                 <input
                   type="text"
                   name="username"
@@ -80,7 +110,7 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email">email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -92,7 +122,7 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="message">message</label>
+                <label htmlFor="message">Message</label>
                 <textarea
                   name="message"
                   id="message"
@@ -105,7 +135,7 @@ export const Contact = () => {
                 ></textarea>
               </div>
               <div>
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
               </div>
             </form>
           </section>

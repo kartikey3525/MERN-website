@@ -1,16 +1,50 @@
 import { NavLink } from "react-router-dom";
 import Analytics  from "../components/Analytics";
+import { useEffect, useRef } from "react";
 
 export const About = () => {
+  const ContentRef = useRef();
+  const ImageRef = useRef();
+
+  useEffect(() => {
+    const options = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    }, options);
+
+    const elementsToAnimate = [ContentRef.current, ImageRef.current];
+
+    elementsToAnimate.forEach((element) => {
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      elementsToAnimate.forEach((element) => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
+
   return (
     <>
       <main>
         <section className="section-hero">
           <div className="container grid grid-two-cols">
-            <div className="hero-content">
+            <div ref={ContentRef} className="hero-content animate-left">
               {/* <p>We care to cure your Health</p> */}
 
-              <h1>Why Choose Us? </h1>
+              <h1 className="main-heading">Why Choose Us? </h1>
               <p>
                 Expertise: Our team consists of experienced IT professionals who
                 are passionate about staying up-to-date with the latest industry

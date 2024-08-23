@@ -155,8 +155,7 @@ header {
   color: var(--btn-color);
   font-size: 2.4rem;
   font-weight: bold;
-  text-decoration: none; 
-  margin-bottom: 5rem;
+  text-decoration: none;  
 }
 
 /* Navbar Links */

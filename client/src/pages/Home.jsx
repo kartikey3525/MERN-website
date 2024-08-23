@@ -69,10 +69,10 @@ export const Home = () => {
             {/* hero image with animation */}
             <div ref={heroImageRef1} className="hero-image animate-right">
               <img
-                src="/images/home.png"
+                src="/images/ai1.jpg"
                 alt="coding together"
-                width="400"
-                height="500"
+                width="100%"
+                height="100%"
               />
             </div>
           </div>
@@ -88,10 +88,10 @@ export const Home = () => {
           {/* hero image with animation */}
           <div ref={heroImageRef2} className="hero-image animate-left">
             <img
-              src="/images/design.png"
+              src="/images/mobiles.jpg"
               alt="coding together"
-              width="400"
-              height="500"
+              width="80%"
+              height="60%"
             />
           </div>
 

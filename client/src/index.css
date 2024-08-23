@@ -125,7 +125,6 @@ li {
   animation-name: slideInFromRight;
 }
 
-
 /* Initial state before animation */
 .animate-left,
 .animate-right {
@@ -147,6 +146,7 @@ header {
   padding: 2rem 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   top: 0;
+  position: relative;
   z-index: 1000;
 }
 
@@ -155,13 +155,14 @@ header {
   color: var(--btn-color);
   font-size: 2.4rem;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none; 
+  margin-bottom: 5rem;
 }
 
 /* Navbar Links */
 nav ul {
   display: flex;
-  gap: 3.2rem;
+  gap: 3rem;
   list-style: none;
 }
 
@@ -198,27 +199,91 @@ nav ul li a.active {
   transform: scale(1.05);
 }
 
-/* Responsive Navbar */
-@media (width <=998px) {
+/* Responsive Styles */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: 20px; */
+}
+
+.menu-toggle .hamburger {
+  background-color: #fff;
+  height: 3px;
+  width: 25px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after {
+  content: "";
+  background-color: #fff;
+  height: 3px;
+  width: 25px;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle .hamburger::before {
+  top: -8px;
+}
+
+.menu-toggle .hamburger::after {
+  top: 8px;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
   nav ul {
+    display: none;
     flex-direction: column;
-    gap: 2rem;
+    width: 100%;
+      position: absolute;
+      top: 10rem;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    nav.nav-open ul {
+      display: flex;
+      transform: translateY(0);
   }
 
-  header {
-    padding: 1.6rem 0;
+    nav ul li {
+      margin: 0;
+      text-align: center;
+      border-bottom: none;
+    }
+  
+    nav ul li:last-child {
+      margin-bottom: 1rem;
+      border-bottom: none;
+    }
+  
+    .menu-toggle {
+      display: flex;
   }
 
-  .logo-brand a {
-    font-size: 2rem;
+    .menu-toggle.hamburger.active {
+      transform: rotate(45deg);
+  }
+.menu-toggle.hamburger.active::before {
+  transform: rotate(90deg);
+  top: 0;
+  
+}
+    .menu-toggle.hamburger.active::after {
+      transform: rotate(90deg);
+      top: 0;
   }
 }
 
-@media (width <=798px) {
-  nav ul li a {
-    font-size: 1.6rem;
-  }
-}
 /* toast body  */
 
 .toastBody {
@@ -288,12 +353,14 @@ button {
     }
   }
 
-  .hero-image {
+    .hero-image img {
     display: flex;
     justify-content: center;
+    border-radius: 1rem;
+      overflow: hidden;
     & img {
-      width: 70%;
-      height: auto;
+      /* width: 70%; */
+        /* height: auto; */
     }
   }
 }
@@ -301,35 +368,73 @@ button {
 /***** End Hero  *****/
 
 /***** analytics Section *****/
-
 .section-analytics {
-  margin: 9.6rem 0;
+  /* padding: 40px 20px; */
+  background-color: #f9f9f9;
+}
 
-  & .container {
-    background-color: var(--bg-color);
-    border-radius: 1rem;
-  }
+.container {
+  /* justify-content: center; */
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  & .grid {
-    color: var(--dark-color); 
+.grid {
+  display: grid; 
+  /* gap: 20px; */
+}
 
-    & .div1 {
-      text-align: center;
-      border-right: 0.2rem solid var(--dark-color);
+.grid-four-cols {
+  grid-template-columns: repeat(4, 1fr); 
+  justify-content: center;
+}
 
-      &:last-child {
-        border: none;
-      }
-      & h2 {
-        font-size: 4.8rem;
-      }
-      & p {
-        text-transform: capitalize;
-      }
-    }
+.grid-item { 
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.grid-item h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.grid-item p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Responsive Styles */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+  .grid-four-cols {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Small Screens (Mobile Devices) */
+@media (max-width: 600px) {
+  .grid-four-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .section-analytics {
+    padding: 20px 10px;
+  }
+
+  .grid-item h2 {
+    font-size: 1.5rem;
+  }
+
+  .grid-item p {
+    font-size: 0.9rem;
+  }
+}
 /***** End analytics Section *****/
 
 .section-contact {
@@ -570,8 +675,10 @@ a.active {
 
     & .card-img {
       text-align: center;
+      border-radius: 1rem;
+        overflow: hidden;
       & img {
-        width: 70%;
+        /* width: 70%; */
         height: auto;
         filter: drop-shadow(0 0 2rem 2rem #fff);
         -webkit-filter: drop-shadow(0 0 2rem 2rem #fff);

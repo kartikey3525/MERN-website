@@ -79,8 +79,8 @@ export const About = () => {
               <img
                 src="/images/about.png"
                 alt="coding buddies "
-                width="400"
-                height="500"
+                width="80%"
+                height="70%"
               />
             </div>
           </div>

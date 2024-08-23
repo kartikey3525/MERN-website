@@ -1,20 +1,25 @@
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../store/auth";
 
 export const Navbar = () => {
   const { isLoggedIn } = useAuth();
-  console.log("login or not ", isLoggedIn);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
       <header>
-        <div className="container">
+        <div className="container" style={{alignItems:'center'}}>
           <div className="logo-brand">
             <NavLink to="/">Snappy Services</NavLink>
           </div>
 
-          <nav>
+          <nav className={isMenuOpen ? "nav-open" : ""}>
             <ul>
               <li>
                 <NavLink exact to="/" activeClassName="active">
@@ -58,6 +63,10 @@ export const Navbar = () => {
               )}
             </ul>
           </nav>
+
+          <div className="menu-toggle" onClick={toggleMenu}>
+            <span className="hamburger"></span>
+          </div>
         </div>
       </header>
     </>

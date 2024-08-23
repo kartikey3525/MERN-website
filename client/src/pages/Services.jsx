@@ -14,14 +14,15 @@ export const Services = () => {
 
       <div className="container grid grid-three-cols">
         {services.map((item, index) => {
-          const { provider, price, service, description } = item;
+          const { provider, price, service, description, image } = item;
           return (
             <div className="card" key={index}>
               <div className="card-img">
                 <img
-                  src="/images/design.png"
+                  src={image}
                   alt="a nurse with a cute look"
-                  width="300"
+                  style={{ borderRadius: 10 }}
+                  width="80%"
                 />
               </div>
               <div className="card-details">

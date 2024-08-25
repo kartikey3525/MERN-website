@@ -97,8 +97,8 @@ export const Login = () => {
                 <img
                   src="/images/login.png"
                   alt="a nurse with a cute look"
-                  width="400"
-                  height="500"
+                  style={{width:'90%' }}
+
                 />
               </div>
               {/* Main registration form */}

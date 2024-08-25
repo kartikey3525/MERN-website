@@ -11,51 +11,55 @@ export const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <header>
-        <div className="container" style={{alignItems:'center'}}>
+        <div className="container" style={{ alignItems: 'center' }}>
           <div className="logo-brand">
-            <NavLink to="/">Snappy Services</NavLink>
+            <NavLink to="/" onClick={closeMenu}>Snappy Services</NavLink>
           </div>
 
           <nav className={isMenuOpen ? "nav-open" : ""}>
             <ul>
               <li>
-                <NavLink exact to="/" activeClassName="active">
+                <NavLink exact to="/" activeClassName="active" onClick={closeMenu}>
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/services" activeClassName="active">
+                <NavLink to="/services" activeClassName="active" onClick={closeMenu}>
                   Services
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" activeClassName="active">
+                <NavLink to="/contact" activeClassName="active" onClick={closeMenu}>
                   Contact
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/about" activeClassName="active">
+                <NavLink to="/about" activeClassName="active" onClick={closeMenu}>
                   About
                 </NavLink>
               </li>
               {isLoggedIn ? (
                 <li>
-                  <NavLink to="/logout" activeClassName="active">
+                  <NavLink to="/logout" activeClassName="active" onClick={closeMenu}>
                     Logout
                   </NavLink>
                 </li>
               ) : (
                 <>
                   <li>
-                    <NavLink to="/register" activeClassName="active">
+                    <NavLink to="/register" activeClassName="active" onClick={closeMenu}>
                       Register
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/login" activeClassName="active">
+                    <NavLink to="/login" activeClassName="active" onClick={closeMenu}>
                       Login
                     </NavLink>
                   </li>
@@ -65,7 +69,7 @@ export const Navbar = () => {
           </nav>
 
           <div className="menu-toggle" onClick={toggleMenu}>
-            <span className="hamburger"></span>
+            <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}></span>
           </div>
         </div>
       </header>

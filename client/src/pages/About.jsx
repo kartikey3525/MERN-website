@@ -69,7 +69,7 @@ export const About = () => {
                 available 24/7.
               </p>
               <div className="btn btn-group">
-                <NavLink to="/contact">
+                <NavLink to="/Portfolio">
                   <button className="btn"> Connect Now</button>
                 </NavLink>
                 <button className="btn secondary-btn">learn more</button>

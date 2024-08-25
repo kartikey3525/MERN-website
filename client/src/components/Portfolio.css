@@ -1,0 +1,8 @@
+.section-Portfolio {
+  .container {
+    display: flex;
+  }
+  .main-heading {
+    color: rgb(255, 255, 255);
+  }
+}

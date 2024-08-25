@@ -477,6 +477,21 @@ button {
   }
 }
 
+.section-registration {
+  & .container {
+    padding-top: 3.2rem;
+   
+  } & .reg-img {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    & img {
+      width: 80%;
+      height: auto;
+    }
+  }
+}
+
 /*? state rules  */
 
 button:hover {
@@ -714,14 +729,7 @@ a.active {
     }
   }
 
-  .section-registration {
-    & .container {
-      & .reg-img img {
-        width: 60%;
-        height: auto;
-      }
-    }
-  }
+  
 }
 
 @media (width <= 798px) {

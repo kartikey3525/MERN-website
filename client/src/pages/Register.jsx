@@ -92,14 +92,13 @@ export const Register = () => {
           <div className="section-registration">
             <div className="container grid grid-two-cols">
               <div
-                className="registration-image reg-img animate-left"
+                className="reg-img animate-left"
                 ref={ImageRef}
               >
                 <img
                   src="/images/register.png"
-                  alt="a nurse with a cute look"
-                  width="400"
-                  height="500"
+                  alt="a nurse with a cute look" 
+                  style={{width:'90%' }}
                 />
               </div>
               {/* our main registration code  */}

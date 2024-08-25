@@ -10,6 +10,7 @@ import { Login } from './pages/Login'
 import { Error } from './pages/Error'
 import { Footer } from './components/footer/Footer'
 import { Logout } from './pages/Logout'
+import { Portfolio } from './pages/Portfolio'
 
  
  export default function App() {
@@ -31,6 +32,8 @@ import { Logout } from './pages/Logout'
          <Route path='/Login' element={<Login />} />
 
          <Route path='/Logout' element={<Logout />} />
+
+         <Route path='/Portfolio' element={<Portfolio />} />
 
          <Route path='*' element={<Error />} />
          

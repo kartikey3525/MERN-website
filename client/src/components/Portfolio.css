@@ -1,8 +1,321 @@
-.section-Portfolio {
-  .container {
-    display: flex;
+.section-Portfolio .container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+}
+
+.btn-group{
+   display: flex;
+flex-direction: row;
+align-items: center;
+justify-content:space-between; 
+margin-top: 5rem;
+
+}
+
+.proj-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top:2rem;
+  align-items:center;
+
+
+.proj-content{
+  width: 50%;
+  align-self: flex-start;
+  & p {
+    text-align: left;
+    margin: 2rem 0 2rem 0;
+    &:first-child {
+      margin: 0 0 1rem 0;
+    }
   }
-  .main-heading {
-    color: rgb(255, 255, 255);
+}
+
+.proj-title {
+  font-size: rem; /* Larger title */
+  font-weight: bold;text-align: left;
+  color: #ffffff; /* Darker color for contrast */
+  margin-bottom: 20px;
+}
+
+.proj-description p {
+  font-size: 1.4rem; /* Slightly larger font for readability */
+  line-height: 1.6; /* Improve readability */
+  color: #ffffff; /* Slightly lighter color for body text */
+  margin-bottom: 15px;
+}
+
+.canvas-wrapper { 
+  display: flex;
+  /* background-color: #fff; */
+  height: 40rem; /* Align to the right */
+  width: 50%;
+  align-self:flex-end;
+}
+}
+
+.circle1 {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%; /* Makes the div a circle */
+  background-color: black;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999999; /* Ensures the circles are on top of all other elements */
+  transition: transform 0.3s ease; /* Smooth scaling */
+}
+ 
+.circle {
+  height: 200px;
+  width: 200px;
+  position: relative;
+  bottom: 5rem;
+  border-radius: 50%;
+  background-color: #fff; 
+  animation: bounceAnimation 2s ease infinite; /* Apply bounce animation */
+}
+
+.circle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the circle without stretching */
+  border-radius: 50%; /* Keeps the image within the circle */
+  position: absolute; /* Positioned relative to the circle */
+  top: 0; /* Ensure it aligns with the circle */
+  left: 0; /* Ensure it aligns with the circle */
+  z-index: 1; /* Ensures the image is on top */
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 8px solid transparent; /* Initial border size */
+  background:   white   ;
+  background-size: 400% 400%;
+  z-index: 0; /* Stays behind the image */
+  box-sizing: border-box; /* Ensures border is included in the size calculations */
+  animation: gradientAnimation 10s ease infinite, rippleAnimation 2s ease-out infinite;
+}
+
+.circle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: #fff; /* Optional: can be removed if the background should be transparent */
+  z-index: 0; /* Ensures it stays behind the image */
+}
+
+/* Create an invisible circle around the cursor */
+.section-Portfolio .heading {
+  font-size: 5rem;
+  line-height: 8rem;
+  font-weight: bold;
+  margin-bottom: 5rem;
+  background-color: #fff;
+  background-size: 500% 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 10s ease infinite, slideDown 1s ease forwards; /* Apply slideDown animation */
+  text-align: center; /* Center the text */
+  pointer-events: none;
+  mix-blend-mode: difference; /* Apply mix-blend-mode to the heading */
+}
+
+.section-Portfolio .heading2 {
+  font-size: 3rem;
+  line-height: 8rem;
+  font-weight: bold;
+  margin-bottom: 5%;
+  background: linear-gradient(
+    90deg,
+    #ff0099,
+    #ff6600 
+  );
+  background-size: 500% 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 10s ease infinite;
+  text-align: center; /* Center the text */
+  position: relative; /* Ensure proper stacking context */
+}
+
+.section-Portfolio .heading3 {
+  font-size: 3rem;
+  line-height: 4rem;
+  font-weight: bold;
+  margin: 5%;
+  background: linear-gradient(
+    90deg,
+    #ffcc00,
+    #66ff66
+   
+  );
+  background-size: 500% 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 10s ease infinite,  ease forwards;  
+  text-align: center; /* Center the text */
+}
+
+.section-Portfolio .heading4 {
+  font-size: 3rem;
+  line-height: 8rem;
+  font-weight: bold;
+  margin-bottom: 2%;
+  background: linear-gradient(
+    90deg,
+    #00ccff,
+    #9900cc
+  );
+  background-size: 500% 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 10s ease infinite,  ease forwards;  
+  text-align: center; /* Center the text */
+}
+
+.section-Portfolio .heading5 {
+  font-size: 3rem;
+  line-height: 8rem;
+  font-weight: bold;
+  margin-bottom: 5;
+  background: linear-gradient(
+    90deg,
+    #ff0099,
+    #ff6600,
+    #33ff52
+  );
+  background-size: 500% 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 10s ease infinite,  ease forwards;  
+  text-align: center; /* Center the text */
+}
+
+/* Paragraph styling for the main content */
+.section-Portfolio .p {
+  font-size: 1.5rem; /* Slightly smaller font size for less emphasis */
+  line-height: 1.8; /* Increased line height for better readability */
+  color: #d7d7d7; /* Slightly lighter dark gray for a softer look */
+  margin: 1.5rem 0; /* Increased margin for better spacing between paragraphs */
+  padding: 0 1.5rem; /* Increased padding for more breathing space */
+  max-width: 800px; /* Limit width for readability */
+  text-align: center; /* Center align text for consistency */
+  font-family: 'Arial', sans-serif; /* Modern font-family for better readability */
+  letter-spacing: 0.5px; /* Slight letter spacing for improved readability */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for better contrast */
+}
+
+/* Paragraph styling for the 'Experienced with' section */
+.section-Portfolio .p2 {
+  font-size: 1.2rem; /* Slightly larger font size for emphasis */
+  font-weight: 600; /* Medium bold for emphasis without being too bold */
+  color: #ffffff; /* Blue color for contrast and emphasis */
+  margin: 1.5rem 0; /* Increased margin for spacing */
+  padding: 0 1.5rem; /* Increased padding for consistency with .p */
+  text-align: center; /* Center align text */
+  font-family: 'Arial', sans-serif; /* Consistent font-family */
+  letter-spacing: 1px; /* Slight letter spacing for a cleaner look */
+  text-transform: uppercase; /* Uppercase text for emphasis */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  display: inline-block; /* To fit the background and padding */
+  padding: 0.5rem 1rem; /* Padding for better readability and fit */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow for depth */
+}
+
+ 
+.section-Portfolio .custom-cursor {
+  cursor: url('/client/public/images/cursor.png'), auto; /* Custom cursor */
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.icons i {
+  font-size: 2.4rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.icons i:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+#scroll-video {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Ensure video is behind the icons */
+  /* opacity: 0.3;   */
+}
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rippleAnimation {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Bounce animation */
+@keyframes bounceAnimation {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at the normal position */
+  }
+  50% {
+    transform: translateY(-20px); /* Move up by 20px */
+  }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100vh); /* Start above the viewport */
+    opacity: 0; /* Invisible at the start */
+  }
+  100% {
+    transform: translateY(0); /* End at the normal position */
+    opacity: 1; /* Fully visible at the end */
   }
 }

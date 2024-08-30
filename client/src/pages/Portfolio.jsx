@@ -172,18 +172,20 @@ export const Portfolio = () => {
 
             <div className="proj-description">
               <p>
-                Expertise: Our team consists of experienced IT professionals who
-                are passionate about staying up-to-date with the latest industry
-                trends.
+                This application is designed to streamline and enhance the
+                service delivery process for a service provider firm
+                specializing in various electronic services.
               </p>
               <p>
-                Customization: We understand that every business is unique.
-                That's why we create solutions that are tailored to your
-                specific needs and goals.
+                The app leverages a dynamic, cloud-based infrastructure to
+                provide a seamless user experience, from browsing available
+                services to booking them.
               </p>
               <p>
-                Customer-Centric Approach: We prioritize your satisfaction and
-                provide top-notch support to address your IT concerns.
+                By integrating dynamic content management, a user-friendly
+                booking interface, and automated email notifications, the app
+                significantly enhances the firm's ability to serve its customers
+                effectively while maintaining up-to-date service offerings.
               </p>
             </div>
 
@@ -229,18 +231,21 @@ export const Portfolio = () => {
 
             <div className="proj-description">
               <p>
-                Expertise: Our team consists of experienced IT professionals who
-                are passionate about staying up-to-date with the latest industry
-                trends.
+                This website is built using the MERN stack (MongoDB, Express,
+                Node.js, React.js) and is designed to be fully
+                device-responsive.
               </p>
               <p>
-                Customization: We understand that every business is unique.
-                That's why we create solutions that are tailored to your
-                specific needs and goals.
+                It features JWT authentication for secure user registration,
+                login, and logout, ensuring data protection and personalized
+                user experiences. This website is built using the MERN stack
+                (MongoDB, Express, Node.js, React.js) and is designed to be
+                fully device-responsive.
               </p>
               <p>
-                Customer-Centric Approach: We prioritize your satisfaction and
-                provide top-notch support to address your IT concerns.
+                It features JWT authentication for secure user registration,
+                login, and logout, ensuring data protection and personalized
+                user experiences.
               </p>
             </div>
 

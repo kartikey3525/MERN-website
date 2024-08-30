@@ -6,55 +6,76 @@
 }
 
 .btn-group{
-   display: flex;
-flex-direction: row;
-align-items: center;
-justify-content:space-between; 
-margin-top: 5rem;
-
-}
-
-.proj-wrapper{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-top:2rem;
-  align-items:center;
-
-
-.proj-content{
-  width: 50%;
-  align-self: flex-start;
-  & p {
-    text-align: left;
-    margin: 2rem 0 2rem 0;
-    &:first-child {
-      margin: 0 0 1rem 0;
-    }
-  }
+  align-items: center;
+  justify-content:space-between; 
+  margin-top: 5rem;
+  
 }
 
-.proj-title {
-  font-size: rem; /* Larger title */
-  font-weight: bold;text-align: left;
+.proj-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.proj-title { 
+  font-weight: bold;
+  text-align: left;
   color: #ffffff; /* Darker color for contrast */
   margin-bottom: 20px;
+  white-space: nowrap; /* Prevents the text from wrapping */
+  overflow: hidden; /* Clips the text that overflows */
+  border-right: 0.15em solid transparent; /* Creates the blinking cursor effect */
+  animation: typing 4s steps(30, end), blink 0.75s step-end infinite; /* Typing and blinking cursor animations */
 }
 
 .proj-description p {
-  font-size: 1.4rem; /* Slightly larger font for readability */
+  font-size: 1.6rem; /* Slightly larger font for readability */
   line-height: 1.6; /* Improve readability */
   color: #ffffff; /* Slightly lighter color for body text */
   margin-bottom: 15px;
+  text-align: left;
+}
+.canvas-wrapper {
+  flex: 1 1 300px;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 20px;
+  /* Add some height to the canvas */
+  height: 300px;
 }
 
-.canvas-wrapper { 
-  display: flex;
-  /* background-color: #fff; */
-  height: 40rem; /* Align to the right */
-  width: 50%;
-  align-self:flex-end;
+.proj-content {
+  flex: 1 1 300px;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 20px;
 }
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .proj-wrapper {
+    flex-direction: column;
+  }
+
+  .canvas-wrapper,
+  .proj-content {
+    max-width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-group span {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
 }
 
 .circle1 {
@@ -71,10 +92,10 @@ margin-top: 5rem;
 }
  
 .circle {
-  height: 200px;
-  width: 200px;
+  height: 170px;
+  width: 170px;
   position: relative;
-  bottom: 5rem;
+  bottom: 3rem;
   border-radius: 50%;
   background-color: #fff; 
   animation: bounceAnimation 2s ease infinite; /* Apply bounce animation */
@@ -129,11 +150,27 @@ margin-top: 5rem;
   background-size: 500% 500%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 10s ease infinite, slideDown 1s ease forwards; /* Apply slideDown animation */
-  text-align: center; /* Center the text */
+  animation: gradientAnimation 10s ease infinite, slideDown 1s ease forwards, typing 5s steps(30, end), blink 0.75s step-end infinite;
+  text-align: center;
   pointer-events: none;
-  mix-blend-mode: difference; /* Apply mix-blend-mode to the heading */
+  mix-blend-mode: difference;
+  overflow: hidden; /* Ensure the text is clipped at the edge */
+  white-space: nowrap; /* Prevent the text from wrapping */
+  border-right: 0.15em solid transparent; /* Create a blinking cursor */
 }
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
 
 .section-Portfolio .heading2 {
   font-size: 3rem;

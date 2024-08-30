@@ -8,7 +8,7 @@ export default function Iphone() {
 
   // Set up the video texture
   const video = document.createElement('video');
-  video.src = '/videos/video1.mp4'; // Replace with your video path
+  video.src = '/videos/app.mp4'; // Replace with your video path
   video.crossOrigin = 'Anonymous';
   video.loop = true;
   video.muted = true;
@@ -43,38 +43,29 @@ export default function Iphone() {
   return (
     <group ref={iphoneRef}>
       {/* iPhone Body with Rounded Corners */}
-      <RoundedBox args={[2.6, 5, 0.3]} radius={0.2} smoothness={4} position={[0, 0, 0]} castShadow>
+      <RoundedBox args={[3.6, 7, 0.3]} radius={0.2} smoothness={5} position={[0, 0, 0]} castShadow>
         <meshStandardMaterial {...bodyMaterial} /> {/* Metal body with rounded edges */}
       </RoundedBox>
 
       {/* Screen with Video */}
-      <Plane args={[2.3, 4.5]} position={[0, 0.01, 0.16]}>
+      <Plane args={[3.2, 6.5]} position={[0, 0.01, 0.16]}>
         <meshPhysicalMaterial {...screenMaterial} /> {/* Map the video as texture */}
       </Plane>
-
-      {/* Home Button */}
-      <Cylinder args={[0.10, 0.12, 0.06, 30]} position={[0, -2.3, 0.16]} rotation={[Math.PI / 2, 0, 0]}>
-        <meshStandardMaterial color="#888888" /> {/* Lightened home button color */}
-      </Cylinder>
-
+ 
       {/* Side Buttons - Volume Up/Down */}
-      <Box args={[0.1, 0.6, 0.1]} position={[-1.3, 1.1, 0]}>
+      <Box args={[0.1, 0.6, 0.1]} position={[-1.8, 1.1, 0]}>
         <meshStandardMaterial color="#888888" /> {/* Lightened side button color */}
       </Box>
       
-      <Box args={[0.1, 0.6, 0.1]} position={[-1.3, 0.3, 0]}>
+      <Box args={[0.1, 0.6, 0.1]} position={[-1.8, 0.3, 0]}>
         <meshStandardMaterial color="#888888" />
       </Box>    
 
       {/* Side Button - Power */}
-      <Box args={[0.1, 0.6, 0.1]} position={[1.3, 1.1, 0]}>
+      <Box args={[0.1, 0.6, 0.1]} position={[1.8, 1.1, 0]}>
         <meshStandardMaterial color="#888888" />
       </Box>
-
-      {/* Rear Camera */}
-      <Cylinder args={[0.1, 0.1, 0.02, 32]} position={[0, 2.1, 0.15]}>
-        <meshStandardMaterial color="#444444" /> {/* Camera color */}
-      </Cylinder>
+ 
     </group>
   );
 }

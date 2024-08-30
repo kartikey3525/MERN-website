@@ -8,7 +8,7 @@ export default function iPad() {
 
   // Set up the video texture
   const video = document.createElement('video');
-  video.src = '/videos/video1.mp4'; // Replace with your video path
+  video.src = '/videos/website.mp4'; // Replace with your video path
   video.crossOrigin = 'Anonymous';
   video.loop = true;
   video.muted = true;
@@ -44,12 +44,12 @@ export default function iPad() {
   return (
     <group ref={ipadRef}>
       {/* iPad Body with Rounded Corners */}
-      <RoundedBox args={[8.5, 6, 0.4]} radius={0.3} smoothness={4} position={[0, 0, 0]} castShadow>
+      <RoundedBox args={[11, 7, 0.4]} radius={0.3} smoothness={4} position={[0, 0, 0]} castShadow>
         <meshStandardMaterial {...bodyMaterial} /> {/* Metal body */}
       </RoundedBox>
 
       {/* Screen with Video */}
-      <Plane args={[8.2, 5.7]} position={[0, 0.01, 0.21]}>
+      <Plane args={[10.3, 6.3]} position={[-0, 0.01, 0.21]}>
         <meshPhysicalMaterial {...screenMaterial} /> {/* Map the video as texture */}
       </Plane>
 

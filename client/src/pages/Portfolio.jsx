@@ -48,34 +48,6 @@ export const Portfolio = () => {
     }
 
     animateCircles();
-
-    // Video Play on Intersection
-    const video = document.getElementById("scroll-video");
-
-    // Wait until the video is ready to play
-    const handleVideoReady = () => {
-      video.play();
-    };
-
-    video.addEventListener("canplay", handleVideoReady);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(document.querySelector(".icons"));
-
-    return () => {
-      video.removeEventListener("canplay", handleVideoReady);
-      observer.disconnect();
-    };
   }, []);
 
   const canvasRef = useRef();
@@ -133,7 +105,12 @@ export const Portfolio = () => {
       });
     }, options);
 
-    const elementsToAnimate = [ContentRef.current, ImageRef.current,ContentRef2.current, ImageRef2.current];
+    const elementsToAnimate = [
+      ContentRef.current,
+      ImageRef.current,
+      ContentRef2.current,
+      ImageRef2.current,
+    ];
 
     elementsToAnimate.forEach((element) => {
       if (element) {
@@ -153,10 +130,10 @@ export const Portfolio = () => {
   return (
     <section className="section-Portfolio">
       <div className="container" style={{ flexDirection: "column" }}>
-        <video id="scroll-video" muted loop>
+        {/* <video id="scroll-video" muted loop>
           <source src="/videos/video1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
 
         {/* Trailing Circles */}
         {Array.from({ length: 22 }).map((_, i) => (
@@ -211,15 +188,17 @@ export const Portfolio = () => {
             </div>
 
             <div className="btn-group">
-             
               <span style={{ fontSize: 25 }}>See live</span>
-              
-              <div className=" " >
-              <span style={{ fontSize: 25 }}>code</span>
 
-                <i className="fab fa-github" title="GitHub" style={{ marginLeft:10,fontSize:25}} ></i>
-              </div> 
+              <div className=" ">
+                <span style={{ fontSize: 25 }}>code</span>
 
+                <i
+                  className="fab fa-github"
+                  title="GitHub"
+                  style={{ marginLeft: 10, fontSize: 25 }}
+                ></i>
+              </div>
             </div>
           </div>
 
@@ -234,12 +213,11 @@ export const Portfolio = () => {
         </div>
 
         <div className="proj-wrapper">
-
-        <div ref={ImageRef2} className="canvas-wrapper animate-left">
+          <div ref={ImageRef2} className="canvas-wrapper animate-left">
             <Canvas ref={canvasRef}>
               <ambientLight intensity={0.5} />
-              <directionalLight position={[5,1,5]} intensity={2} />
-              <OrbitControls />
+              <directionalLight position={[5, 1, 5]} intensity={2} />
+              {/* <OrbitControls /> */}
               <Ipad />
             </Canvas>
           </div>
@@ -267,19 +245,19 @@ export const Portfolio = () => {
             </div>
 
             <div className="btn-group">
-             
               <span style={{ fontSize: 25 }}>See live</span>
-              
-              <div className=" " >
-              <span style={{ fontSize: 25 }}>code</span>
 
-                <i className="fab fa-github" title="GitHub" style={{ marginLeft:10,fontSize:25}} ></i>
-              </div> 
+              <div className=" ">
+                <span style={{ fontSize: 25 }}>code</span>
 
+                <i
+                  className="fab fa-github"
+                  title="GitHub"
+                  style={{ marginLeft: 10, fontSize: 25 }}
+                ></i>
+              </div>
             </div>
           </div>
-
-         
         </div>
 
         <h1 className="heading2">About</h1>

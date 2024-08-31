@@ -30,7 +30,25 @@
   white-space: nowrap; /* Prevents the text from wrapping */
   overflow: hidden; /* Clips the text that overflows */
   border-right: 0.15em solid transparent; /* Creates the blinking cursor effect */
-  animation: typing 4s steps(30, end), blink 0.75s step-end infinite; /* Typing and blinking cursor animations */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease; /* Smooth fade-in */
+}
+
+/* Typing and blinking animations */
+.typing-animation {
+  animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
+}
+
+/* Typing animation keyframes */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: #ffffff; }
 }
 
 .proj-description p {
@@ -150,7 +168,7 @@
   background-size: 500% 500%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 10s ease infinite, slideDown 1s ease forwards, typing 5s steps(30, end), blink 0.75s step-end infinite;
+  animation: gradientAnimation 10s ease infinite,   typing 5s steps(30, end), blink 0.75s step-end infinite;
   text-align: center;
   pointer-events: none;
   mix-blend-mode: difference;
@@ -176,7 +194,7 @@
   font-size: 3rem;
   line-height: 8rem;
   font-weight: bold;
-  margin-bottom: 5%;
+  margin-bottom: 3rem;
   background: linear-gradient(
     90deg,
     #ff0099,
@@ -194,7 +212,7 @@
   font-size: 3rem;
   line-height: 4rem;
   font-weight: bold;
-  margin: 5%;
+  margin: 3rem;
   background: linear-gradient(
     90deg,
     #ffcc00,
@@ -212,7 +230,7 @@
   font-size: 3rem;
   line-height: 8rem;
   font-weight: bold;
-  margin-bottom: 2%;
+  margin-bottom: 3rem;
   background: linear-gradient(
     90deg,
     #00ccff,
@@ -229,7 +247,7 @@
   font-size: 3rem;
   line-height: 8rem;
   font-weight: bold;
-  margin-bottom: 5;
+  margin-bottom: 3rem;
   background: linear-gradient(
     90deg,
     #ff0099,
@@ -248,7 +266,7 @@
   font-size: 1.5rem; /* Slightly smaller font size for less emphasis */
   line-height: 1.8; /* Increased line height for better readability */
   color: #d7d7d7; /* Slightly lighter dark gray for a softer look */
-  margin: 1.5rem 0; /* Increased margin for better spacing between paragraphs */
+  margin: 1rem 0; /* Increased margin for better spacing between paragraphs */
   padding: 0 1.5rem; /* Increased padding for more breathing space */
   max-width: 800px; /* Limit width for readability */
   text-align: center; /* Center align text for consistency */
@@ -307,6 +325,21 @@
   /* opacity: 0.3;   */
 }
 
+.fd-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Adjusts alignment to the start of the row */
+  gap: 20px; /* Adds space between the links */
+}
+
+.Edu-title {
+  margin: 0;
+  font-size: 24px;
+  color: #ffffff; /* Adjust the color as needed */
+  cursor: pointer;
+}
+
+ 
 
 @keyframes gradientAnimation {
   0% {

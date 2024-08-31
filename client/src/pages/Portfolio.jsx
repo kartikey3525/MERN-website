@@ -127,6 +127,30 @@ export const Portfolio = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const projTitles = document.querySelectorAll(".proj-title");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("typing-animation");
+            entry.target.style.opacity = 1; // Fade in the text
+            console.log(`Animating: ${entry.target.textContent}`); // Log when animation is triggered
+            observer.unobserve(entry.target); // Stop observing once the animation has triggered
+          }
+        });
+      },
+      { threshold: 0.1 }
+    ); // Trigger when 10% of the element is visible
+
+    projTitles.forEach((projTitle) => observer.observe(projTitle));
+
+    return () => {
+      projTitles.forEach((projTitle) => observer.unobserve(projTitle));
+    };
+  }, []);
+
   return (
     <section className="section-Portfolio">
       <div className="container" style={{ flexDirection: "column" }}>
@@ -143,7 +167,7 @@ export const Portfolio = () => {
         <div className="circle">
           <img src="/images/my-pic.jpg" alt="Profile" className="circle-img" />
         </div>
-        <h1 className="heading">Kartikey Kapoor</h1>
+        <h1 className="heading">Kartikey kapoor</h1>
         <p className="p">
           I have expertise in HTML, CSS, and JavaScript, along with experience
           in React.js and React Native. I enjoy creating responsive, visually
@@ -190,17 +214,22 @@ export const Portfolio = () => {
             </div>
 
             <div className="btn-group">
-              <span style={{ fontSize: 25 }}>See live</span>
+              <span style={{ fontSize: 25 }}> </span>
 
-              <div className=" ">
-                <span style={{ fontSize: 25 }}>code</span>
-
-                <i
-                  className="fab fa-github"
-                  title="GitHub"
-                  style={{ marginLeft: 10, fontSize: 25 }}
-                ></i>
-              </div>
+              <a
+                href="https://github.com/kartikey3525/snappyserv-app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className=" ">
+                  <span style={{ fontSize: 25 }}>code</span>
+                  <i
+                    className="fab fa-github"
+                    title="GitHub"
+                    style={{ marginLeft: 10, fontSize: 25 }}
+                  ></i>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -250,24 +279,108 @@ export const Portfolio = () => {
             </div>
 
             <div className="btn-group">
-              <span style={{ fontSize: 25 }}>See live</span>
+              <a
+                href=" https://mern-website-demo.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span style={{ fontSize: 25 }}>See live</span>
+              </a>
 
-              <div className=" ">
-                <span style={{ fontSize: 25 }}>code</span>
-
-                <i
-                  className="fab fa-github"
-                  title="GitHub"
-                  style={{ marginLeft: 10, fontSize: 25 }}
-                ></i>
-              </div>
+              <a
+                href="https://github.com/kartikey3525/MERN-website"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className=" ">
+                  <span style={{ fontSize: 25 }}>code</span>
+                  <i
+                    className="fab fa-github"
+                    title="GitHub"
+                    style={{ marginLeft: 10, fontSize: 25 }}
+                  ></i>
+                </div>
+              </a>
             </div>
           </div>
         </div>
-
         <h1 className="heading2">About</h1>
+
+        <p className="p">
+          I am currently pursuing a Bachelor of Computer Applications (BCA)
+          while working part-time and freelance projects as a React and React
+          Native software developer. Through this role, I have developed a
+          strong command of programming and gained substantial knowledge in
+          essential tools and software such as Firestore, GitHub, VS Code,
+          Figma, MongoDB, Redux, React Three Fiber (R3F), and Android Studio.
+        </p>
+
         <h1 className="heading3">Education</h1>
+
+        <h2 className="Edu-title">BCA (Bachelors)</h2>
+
+        <div className="proj-description">
+          <p>
+            Indira Gandhi National Open University{" "}
+            <span>(june 2022 - march 2025)</span>
+          </p>
+        </div>
+
+        <h2 className="Edu-title">12th</h2>
+
+        <div className="proj-description">
+          <p>
+            NIOS <span>(2020 - 2021)</span>
+          </p>
+        </div>
+        <h2 className="Edu-title">10th & 11th</h2>
+
+        <div className="proj-description">
+          <p>
+            Rattan Convent School <span>(2018 - 2020)</span>
+          </p>
+        </div>
+
         <h1 className="heading4">Contact me</h1>
+
+        <h2 className="Edu-title">Email</h2>
+
+        <div className="proj-description">
+          <p>kartikeykapoor25@gmail.com</p>
+        </div>
+        <h2 className="Edu-title">Phone no.</h2>
+
+        <div className="proj-description">
+          <p>8860315531</p>
+        </div>
+
+        <div className="fd-row">
+  <a
+    href="https://www.linkedin.com/in/kartikey-kapoor-452a941a0/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <h2 className="Edu-title">
+      <span>
+        <i className="fa-brands fa-linkedin"></i>
+      </span>
+    </h2>
+  </a>
+
+  <a
+    href="https://www.instagram.com/kartikey.kapoor.25/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <h2 className="Edu-title">
+      <span>
+        <i className="fa-brands fa-square-instagram"></i>
+      </span>
+    </h2>
+  </a>
+</div>
+
+        
       </div>
     </section>
   );

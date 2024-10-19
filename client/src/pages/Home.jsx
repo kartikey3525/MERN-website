@@ -56,12 +56,12 @@ export const Home = () => {
                 no further! At Snappy, we specialize in providing innovative IT
                 services and solutions tailored to meet your unique needs.
               </p>
-              <div className="btn btn-group">
+              <div className="btn-group">
                 <a href="/contact">
                   <button className="btn">connect now</button>
                 </a>
                 <a href="/services">
-                  <button className="btn secondary-btn">learn more</button>
+                  <button className="secondary-btn">learn more</button>
                 </a>
               </div>
             </div>
@@ -90,8 +90,8 @@ export const Home = () => {
             <img
               src="/images/mobiles.jpg"
               alt="coding together"
-              width="80%"
-              height="60%"
+              width="100%"
+              height="100%"
             />
           </div>
 
@@ -104,12 +104,12 @@ export const Home = () => {
               let's discuss how Snappy can help your business thrive in the
               digital age.
             </p>
-            <div className="btn btn-group">
+            <div className="btn-group">
               <a href="/contact">
                 <button className="btn">connect now</button>
               </a>
               <a href="/services">
-                <button className="btn secondary-btn">learn more</button>
+                <button className="secondary-btn">learn more</button>
               </a>
             </div>
           </div>

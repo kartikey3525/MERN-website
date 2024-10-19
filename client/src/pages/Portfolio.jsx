@@ -8,6 +8,13 @@ import { NavLink } from "react-router-dom";
 import Ipad from "../components/Ipad";
 
 export const Portfolio = () => {
+  
+  const canvasRef = useRef();
+  const ContentRef = useRef();
+  const ImageRef = useRef();
+  const ContentRef2 = useRef();
+  const ImageRef2 = useRef();
+
   useEffect(() => {
     // Trailing Circle Effect
     const coords = { x: 0, y: 0 };
@@ -49,48 +56,6 @@ export const Portfolio = () => {
 
     animateCircles();
   }, []);
-
-  const canvasRef = useRef();
-
-  useEffect(() => {
-    const renderer = canvasRef.current?.gl;
-
-    if (renderer) {
-      const handleContextLost = (event) => {
-        event.preventDefault();
-        alert("WebGL context lost. Please reload the page.");
-      };
-
-      const handleContextRestored = () => {
-        alert("WebGL context restored. Attempting to recover.");
-      };
-
-      renderer.domElement.addEventListener(
-        "webglcontextlost",
-        handleContextLost
-      );
-      renderer.domElement.addEventListener(
-        "webglcontextrestored",
-        handleContextRestored
-      );
-
-      return () => {
-        renderer.domElement.removeEventListener(
-          "webglcontextlost",
-          handleContextLost
-        );
-        renderer.domElement.removeEventListener(
-          "webglcontextrestored",
-          handleContextRestored
-        );
-      };
-    }
-  }, []);
-
-  const ContentRef = useRef();
-  const ImageRef = useRef();
-  const ContentRef2 = useRef();
-  const ImageRef2 = useRef();
 
   useEffect(() => {
     const options = {
@@ -153,19 +118,14 @@ export const Portfolio = () => {
 
   return (
     <section className="section-Portfolio">
-      <div className="container" style={{ flexDirection: "column" }}>
-        {/* <video id="scroll-video" muted loop>
-          <source src="/videos/video1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video> */}
-
+      <div className="container">
         {/* Trailing Circles */}
         {Array.from({ length: 22 }).map((_, i) => (
           <div className="circle1" key={i}></div>
         ))}
 
         <div className="circle">
-          <img src="/images/my-pic.jpg" alt="Profile" className="circle-img" />
+          <img src="/images/mypic2.jpg" alt="Profile" className="circle-img" />
         </div>
         <h1 className="heading">Kartikey kapoor</h1>
         <p className="p">
@@ -194,24 +154,22 @@ export const Portfolio = () => {
               1. <span style={{ fontSize: 35 }}>React native app</span>
             </h1>
 
-            <div className="proj-description">
-              <p>
-                This application is designed to streamline and enhance the
-                service delivery process for a service provider firm
-                specializing in various electronic services.
-              </p>
-              <p>
-                The app leverages a dynamic, cloud-based infrastructure to
-                provide a seamless user experience, from browsing available
-                services to booking them.
-              </p>
-              <p>
-                By integrating dynamic content management, a user-friendly
-                booking interface, and automated email notifications, the app
-                significantly enhances the firm's ability to serve its customers
-                effectively while maintaining up-to-date service offerings.
-              </p>
-            </div>
+            <p className="proj-description">
+              This application is designed to streamline and enhance the service
+              delivery process for a service provider firm specializing in
+              various electronic services.
+            </p>
+            <p className="proj-description">
+              The app leverages a dynamic, cloud-based infrastructure to provide
+              a seamless user experience, from browsing available services to
+              booking them.
+            </p>
+            <p className="proj-description">
+              By integrating dynamic content management, a user-friendly booking
+              interface, and automated email notifications, the app
+              significantly enhances the firm's ability to serve its customers
+              effectively while maintaining up-to-date service offerings.
+            </p>
 
             <div className="btn-group">
               <span style={{ fontSize: 25 }}> </span>
@@ -248,7 +206,7 @@ export const Portfolio = () => {
             <Canvas ref={canvasRef}>
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 1, 5]} intensity={2} />
-              {/* <OrbitControls /> */}
+              <OrbitControls />
               <Ipad />
             </Canvas>
           </div>
@@ -258,25 +216,22 @@ export const Portfolio = () => {
               2. <span style={{ fontSize: 35 }}>React website</span>
             </h1>
 
-            <div className="proj-description">
-              <p>
-                This website is built using the MERN stack (MongoDB, Express,
-                Node.js, React.js) and is designed to be fully
-                device-responsive.
-              </p>
-              <p>
-                It features JWT authentication for secure user registration,
-                login, and logout, ensuring data protection and personalized
-                user experiences. This website is built using the MERN stack
-                (MongoDB, Express, Node.js, React.js) and is designed to be
-                fully device-responsive.
-              </p>
-              <p>
-                It features JWT authentication for secure user registration,
-                login, and logout, ensuring data protection and personalized
-                user experiences.
-              </p>
-            </div>
+            <p className="proj-description">
+              This website is built using the MERN stack (MongoDB, Express,
+              Node.js, React.js) and is designed to be fully device-responsive.
+            </p>
+            <p className="proj-description">
+              It features JWT authentication for secure user registration,
+              login, and logout, ensuring data protection and personalized user
+              experiences. This website is built using the MERN stack (MongoDB,
+              Express, Node.js, React.js) and is designed to be fully
+              device-responsive.
+            </p>
+            <p className="proj-description">
+              It features JWT authentication for secure user registration,
+              login, and logout, ensuring data protection and personalized user
+              experiences.
+            </p>
 
             <div className="btn-group">
               <a
@@ -355,32 +310,30 @@ export const Portfolio = () => {
         </div>
 
         <div className="fd-row">
-  <a
-    href="https://www.linkedin.com/in/kartikey-kapoor-452a941a0/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <h2 className="Edu-title">
-      <span>
-        <i className="fa-brands fa-linkedin"></i>
-      </span>
-    </h2>
-  </a>
+          <a
+            href="https://www.linkedin.com/in/kartikey-kapoor-452a941a0/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2 className="Edu-title">
+              <span>
+                <i className="fa-brands fa-linkedin"></i>
+              </span>
+            </h2>
+          </a>
 
-  <a
-    href="https://www.instagram.com/kartikey.kapoor.25/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <h2 className="Edu-title">
-      <span>
-        <i className="fa-brands fa-square-instagram"></i>
-      </span>
-    </h2>
-  </a>
-</div>
-
-        
+          <a
+            href="https://www.instagram.com/kartikey.kapoor.25/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2 className="Edu-title">
+              <span>
+                <i className="fa-brands fa-square-instagram"></i>
+              </span>
+            </h2>
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { RoundedBox, Plane, Cylinder, Box } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { RoundedBox, Plane, Box } from '@react-three/drei';
+import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 export default function Iphone() {
   const iphoneRef = useRef();
+  const { viewport } = useThree();
 
   // Set up the video texture
   const video = document.createElement('video');
@@ -34,10 +35,14 @@ export default function Iphone() {
     clearcoatRoughness: 0.1,
   });
 
+  // Responsive scaling factor based on viewport width
+  const scaleFactor = Math.min(viewport.width / 10, 1); // Scale down if viewport is narrower
+
   // Animation loop for floating effect
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
     iphoneRef.current.position.y = Math.sin(time) * 0.2; // Adjust the amplitude (0.2) for more or less floating
+    iphoneRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor); // Adjust scale dynamically
   });
 
   return (

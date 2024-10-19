@@ -301,7 +301,7 @@ nav ul li a.active {
 
 .grid {
   display: grid;
-  gap: 6.4rem;
+  gap: 6.4rem; 
 }
 
 .grid-two-cols {
@@ -334,10 +334,47 @@ button {
   -o-transition: border-color 0.3s;
 }
 
+/* Base styles for the button group */
+.btn-group {
+  display: flex;
+  flex-direction: row; /* Default is row for larger screens */
+  /* justify-content: space-between; */
+  gap: 10px; /* Space between buttons */
+  margin-top: 2rem;
+}
+
+.btn {  
+  color: white;
+  border: none;
+  align-items: center;
+  height: 4rem;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Media query for phones */
+@media (max-width: 480px) {
+  .btn-group {
+    flex-direction: row; /* Stack buttons in a row on smaller screens */
+    justify-content: center; /* Center the buttons horizontally */
+  }
+
+  .btn {
+    flex: 1; /* Allow buttons to fill available space evenly */
+    max-width: 100%; /* Make sure buttons don’t exceed the container width */
+    text-align: center; /* Center text inside the button */
+  }
+}
+
 .secondary-btn {
   background-color: transparent;
   box-shadow: inset 0 0 0 0.2rem var(--btn-color);
-  margin-left: 3.2rem;
+  height: 4rem;
+  font-size: 1rem;
+
+  /* margin-left: 0.2rem; */
 }
 
 /***** Hero Section *****/
@@ -347,7 +384,7 @@ button {
     align-items: center;
   }
 
-  .hero-content {
+  .hero-content { 
     & p {
       margin: 2.4rem 0 4.8rem 0;
       &:first-child {
@@ -357,7 +394,7 @@ button {
   }
 
     .hero-image img {
-    display: flex;
+    display: flex; 
     justify-content: center;
     border-radius: 1rem;
       overflow: hidden;
@@ -718,6 +755,12 @@ a.active {
   }
 }
 
+
+/** -----------------------
+** media query section css
+** -------------------------  */
+
+ 
 /** -----------------------
 ** media query section css
 ** -------------------------  */

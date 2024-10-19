@@ -70,9 +70,9 @@ export const About = () => {
               </p>
               <div className="btn btn-group">
                 <NavLink to="/Portfolio">
-                  <button className="btn"> Connect with Dev</button>
+                  <button className="btn">Connect with Dev</button>
                 </NavLink>
-                <button className="btn secondary-btn">learn more</button>
+                <button className="secondary-btn">learn more</button>
               </div>
             </div>
             <div className="hero-image">

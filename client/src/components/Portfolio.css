@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center; 
   text-align: center;
+  flex-direction: column;
 }
 
 .btn-group{
@@ -51,51 +52,34 @@
   50% { border-color: #ffffff; }
 }
 
-.proj-description p {
+.proj-description {
   font-size: 1.6rem; /* Slightly larger font for readability */
   line-height: 1.6; /* Improve readability */
   color: #ffffff; /* Slightly lighter color for body text */
   margin-bottom: 15px;
   text-align: left;
 }
+canvas {
+  width: 100% !important; /* Ensures canvas fills the wrapper */
+  height: 100% !important; /* Ensures canvas fills the wrapper */
+  display: block; /* Prevents scrollbars */
+}
 .canvas-wrapper {
   flex: 1 1 300px;
-  max-width: 500px;
+  max-width: 100%;
   min-width: 300px;
   margin: 20px;
-  /* Add some height to the canvas */
-  height: 300px;
+  height: 300px; /* Adjust the height to suit your layout */
+  position: relative; /* Ensure the div is positioned relative to the page */
+  overflow: hidden; 
 }
 
 .proj-content {
   flex: 1 1 300px;
-  max-width: 500px;
-  min-width: 300px;
+  max-width: 500px; 
   margin: 20px;
 }
-
-/* Media Queries for smaller screens */
-@media (max-width: 768px) {
-  .proj-wrapper {
-    flex-direction: column;
-  }
-
-  .canvas-wrapper,
-  .proj-content {
-    max-width: 100%;
-  }
-
-  .btn-group {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .btn-group span {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-}
-
+   
 .circle1 {
   height: 24px;
   width: 24px;
@@ -164,17 +148,112 @@
   line-height: 8rem;
   font-weight: bold;
   margin-bottom: 5rem;
-  background-color: #fff;
-  background-size: 500% 500%;
+  background-color: #fff; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 10s ease infinite,   typing 5s steps(30, end), blink 0.75s step-end infinite;
+  animation: gradientAnimation 10s ease infinite, typing 5s steps(30, end), blink 0.75s step-end infinite;
   text-align: center;
-  pointer-events: none;
-  mix-blend-mode: difference;
+  pointer-events: none; 
   overflow: hidden; /* Ensure the text is clipped at the edge */
   white-space: nowrap; /* Prevent the text from wrapping */
   border-right: 0.15em solid transparent; /* Create a blinking cursor */
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+
+  .canvas-wrapper {
+    max-width: 400px; /* Reduce max width for tablets */
+    min-width: 250px; /* Reduce min width for tablets */
+    height: 250px; /* Adjust height for smaller screens */
+    margin: 15px; /* Decrease margin for better spacing */
+    position: relative; /* Ensure the div is positioned relative to the page */
+    overflow: hidden; 
+  }
+
+  .section-Portfolio .heading {
+    font-size: 3rem; /* Adjust font size for tablets/smaller screens */
+    line-height: 4rem; /* Adjust line height for better spacing */
+    margin-bottom: 3rem; /* Reduce bottom margin */
+    white-space: normal; /* Allow text wrapping on smaller screens */
+    text-align: center; /* Ensure text stays centered */
+    padding: 0 10px; /* Add padding for better spacing on smaller screens */
+    overflow: hidden; /* Ensure the text is clipped at the edge */
+    white-space: nowrap; /* Prevent the text from wrapping */
+  }
+  .proj-title {
+    font-size: 1.4rem; /* Adjust font size for smaller screens */
+    text-align: left; /* Center align text for better readability */
+  }
+
+  .proj-description {
+    font-size: 1.4rem; /* Slightly smaller font size */
+    line-height: 1.4; /* Adjust line height for readability */
+    text-align: left; /* Center align for smaller screens */
+  }
+
+  .proj-content {
+    flex: 1 1 100%; /* Allow it to take full width on smaller screens */
+    max-width: 100%; /* Remove max-width limitation */
+    min-width: auto; /* Adjust min-width to auto for flexibility */
+    margin: 15px 10px; /* Adjust margin for better spacing */
+  }
+
+  .proj-wrapper {
+    flex-direction: column;
+  }
+ 
+  .proj-content {
+    max-width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+}
+
+@media (max-width: 480px) {
+
+  .canvas-wrapper {
+    max-width: 95%; /* Allow full width on small screens */
+    min-width: 200px; /* Further reduce min width */
+    height: 200px; /* Reduce height for small screens */
+    margin: 10px; /* Further reduce margin */
+    position: relative; /* Ensure the div is positioned relative to the page */
+    overflow: hidden; 
+  }
+
+  .proj-title {
+    font-size: 1.2rem; /* Further reduce font size for very small screens */
+    text-align: left; /* Maintain center alignment */
+    margin-bottom: 10px; /* Adjust margin for better spacing */
+  }
+
+  .proj-description {
+    font-size: 1.2rem; /* Smaller font size for smaller screens */
+    line-height: 1.3; /* Tighter line height */
+    text-align: left; /* Keep text centered */
+    max-width: 100%;
+    margin-bottom: 10px; /* Adjust margin for spacing */
+  }
+  .proj-content {
+    flex: 1 1 100%; /* Full width on smaller screens */
+    max-width: 100%; /* No width constraint */
+    min-width: auto; /* Allow it to shrink as needed */
+    margin: 10px 5px; /* Reduce margin further */
+  }
+
+  .section-Portfolio .heading {
+    font-size: 2rem; /* Further reduce font size for phones */
+    line-height: 3rem; /* Adjust line height accordingly */
+    margin-bottom: 2rem; /* Further reduce bottom margin */
+    text-align: center; /* Keep text centered */
+    padding: 0 5px; /* Increase padding to accommodate smaller screen sizes */
+    overflow: hidden; /* Ensure the text is clipped at the edge */
+    white-space: nowrap; /* Prevent the text from wrapping */
+  }
 }
 
 /* Typing animation */
@@ -339,7 +418,9 @@
   cursor: pointer;
 }
 
- 
+.fd-row a {
+  text-decoration: none; /* Removes underline from links */ 
+}
 
 @keyframes gradientAnimation {
   0% {

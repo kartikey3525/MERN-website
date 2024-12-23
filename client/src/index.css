@@ -99,6 +99,10 @@ canvas {
 .card:nth-child(4) {
   animation-delay: 1.2s;
 }
+.card:nth-child(5) {
+  animation-delay: 1.5s;
+}
+
 
 /* Add more nth-child selectors as needed based on the number of items */
 
@@ -294,7 +298,7 @@ nav ul li a.active {
   font-size: 1.5rem;
 }
 .container {
-  max-width: 140rem;
+  /* max-width: 140rem; */
   padding: 4rem 2.4rem;
   margin: 0 auto;
 }

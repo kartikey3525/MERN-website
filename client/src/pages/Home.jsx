@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Analytics from "../components/Analytics";
+import Tiles from "../components/Tiles";
 
 export const Home = () => {
   const heroContentRef = useRef();
@@ -48,19 +49,30 @@ export const Home = () => {
         <section className="section-hero">
           <div className="container grid grid-two-cols">
             <div ref={heroContentRef} className="hero-content animate-left">
-              <h1>Welcome to Snappy services</h1>
+              <h1>Welcome to App Artistry</h1>
               {/* <p></p> */}
               <p>
                 We are the World Best IT Company , are you ready to take your
                 business to the next level with cutting-edge IT solutions? Look
-                no further! At Snappy, we specialize in providing innovative IT
-                services and solutions tailored to meet your unique needs.
+                no further! At App Artistry, we specialize in providing
+                innovative IT services and solutions tailored to meet your
+                unique needs.
               </p>
               <div className="btn-group">
-                <a href="/contact">
+                <a
+                  href="/Portfolio"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
                   <button className="btn">connect now</button>
                 </a>
-                <a href="/services">
+                <a
+                  href="/services"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
                   <button className="secondary-btn">learn more</button>
                 </a>
               </div>
@@ -69,7 +81,7 @@ export const Home = () => {
             {/* hero image with animation */}
             <div ref={heroImageRef1} className="hero-image animate-right">
               <img
-                src="/images/ai1.jpg"
+                src="/images/website1.jpg"
                 alt="coding together"
                 width="100%"
                 height="100%"
@@ -81,6 +93,8 @@ export const Home = () => {
 
       {/* 2nd section */}
       <Analytics />
+
+      <Tiles />
 
       {/* 3rd section */}
       <section className="section-hero">
@@ -101,8 +115,8 @@ export const Home = () => {
             <p>
               Ready to take the first step towards a more efficient and secure
               IT infrastructure? Contact us today for a free consultation and
-              let's discuss how Snappy can help your business thrive in the
-              digital age.
+              let's discuss how App Artistry can help your business thrive in
+              the digital age.
             </p>
             <div className="btn-group">
               <a href="/contact">

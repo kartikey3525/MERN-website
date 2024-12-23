@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../store/auth";
+// import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
 export const Login = () => {
@@ -9,7 +9,7 @@ export const Login = () => {
     password: "",
   });
 
-  const { storeTokenInLS } = useAuth();
+  // const { storeTokenInLS } = useAuth();
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -97,8 +97,7 @@ export const Login = () => {
                 <img
                   src="/images/login.png"
                   alt="a nurse with a cute look"
-                  style={{width:'90%' }}
-
+                  style={{ width: "90%" }}
                 />
               </div>
               {/* Main registration form */}

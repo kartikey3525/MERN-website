@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useAuth } from "../store/auth";
+// import { useAuth } from "../store/auth";
 
 const defaultContactFormData = {
   username: "",
@@ -9,18 +9,18 @@ const defaultContactFormData = {
 
 export const Contact = () => {
   const [data, setData] = useState(defaultContactFormData);
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
-  useEffect(() => {
-    console.log("user", user);
-    if (user) {
-      setData({
-        username: user.username || "",
-        email: user.email || "",
-        message: "",
-      });
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   console.log("user", user);
+  //   if (user) {
+  //     setData({
+  //       username: user.username || "",
+  //       email: user.email || "",
+  //       message: "",
+  //     });
+  //   }
+  // }, [user]);
 
   const ContentRef = useRef();
   const ImageRef = useRef();

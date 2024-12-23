@@ -3,7 +3,10 @@ import React from "react";
 export default function Analytics() {
   return (
     <section className="section-analytics">
-      <div className="container" style={{justifyContent:'center'}}>
+      <div
+        className="container"
+        style={{ justifyContent: "center", margin: "5%" }}
+      >
         <div className="grid grid-four-cols">
           <div className="grid-item">
             <h2>50+</h2>

@@ -69,7 +69,12 @@ export const About = () => {
                 available 24/7.
               </p>
               <div className="btn btn-group">
-                <NavLink to="/Portfolio">
+                <NavLink
+                  to="/Portfolio"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
                   <button className="btn">Connect with Dev</button>
                 </NavLink>
                 <button className="secondary-btn">learn more</button>

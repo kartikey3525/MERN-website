@@ -1,26 +1,13 @@
+ 
 import { useState, useEffect, useRef } from "react";
-// import { useAuth } from "../store/auth";
 
 const defaultContactFormData = {
-  username: "",
   email: "",
   message: "",
 };
 
 export const Contact = () => {
   const [data, setData] = useState(defaultContactFormData);
-  // const { user } = useAuth();
-
-  // useEffect(() => {
-  //   console.log("user", user);
-  //   if (user) {
-  //     setData({
-  //       username: user.username || "",
-  //       email: user.email || "",
-  //       message: "",
-  //     });
-  //   }
-  // }, [user]);
 
   const ContentRef = useRef();
   const ImageRef = useRef();
@@ -61,28 +48,14 @@ export const Contact = () => {
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:5000/api/form/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setData(defaultContactFormData);
-        const responseData = await response.json();
-        alert(responseData.message);
-        console.log(responseData);
-      } else {
-        console.error("API Error:", response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    const subject = "New Contact Form Submission";
+    const body = `Email: ${data.email}\nMessage: ${data.message}`;
+    const mailtoLink = `mailto:kartikeykapoor25@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -97,18 +70,6 @@ export const Contact = () => {
           </div>
           <section ref={ContentRef} className="section-form animate-right">
             <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  autoComplete="off"
-                  value={data.username}
-                  onChange={handleInput}
-                  required
-                />
-              </div>
               <div>
                 <label htmlFor="email">Email</label>
                 <input
@@ -154,3 +115,4 @@ export const Contact = () => {
     </>
   );
 };
+ 

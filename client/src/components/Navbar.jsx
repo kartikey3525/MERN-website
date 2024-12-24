@@ -46,7 +46,7 @@ export const Navbar = () => {
                   Services
                 </NavLink>
               </li>
-              {/* <li>
+              <li>
                 <NavLink
                   to="/contact"
                   activeClassName="active"
@@ -54,7 +54,7 @@ export const Navbar = () => {
                 >
                   Contact
                 </NavLink>
-              </li> */}
+              </li>
               <li>
                 <NavLink
                   to="/about"

@@ -206,7 +206,7 @@ export const Portfolio = () => {
             <Canvas ref={canvasRef}>
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 1, 5]} intensity={2} />
-              <OrbitControls />
+              {/* <OrbitControls /> */}
               <Ipad />
             </Canvas>
           </div>

@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Tiles.css"; // Import the CSS file
 
 export default function Tiles() {
@@ -8,10 +8,8 @@ export default function Tiles() {
       <div className="container text-center">
         <ul className="tiles-list">
           <li>
-            <a
-              href="/services"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
+          <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+
               <div className="img-container">
                 <img src="/images/app-dev1.jpg" alt="services" />
               </div>
@@ -36,14 +34,11 @@ export default function Tiles() {
               >
                 Building cross-platform mobile applications with React Native.
               </p>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="/services"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
+          <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <div className="img-container">
                 <img src="/images/website2.jpg" alt="services" />
               </div>
@@ -68,14 +63,11 @@ export default function Tiles() {
               >
                 Creating dynamic and high-performance websites with React.js.
               </p>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="/services"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
+          <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <div className="img-container">
                 <img src="/images/webdev.png" alt="services" />
               </div>
@@ -100,14 +92,11 @@ export default function Tiles() {
               >
                 Building custom WordPress websites tailored to your business.
               </p>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="/services"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
+          <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <div className="img-container">
                 <img src="/images/ux.jpg" alt="services" />
               </div>
@@ -133,14 +122,11 @@ export default function Tiles() {
                 Designing intuitive and visually appealing interfaces for mobile
                 applications.
               </p>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="/services"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
+          <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <div className="img-container">
                 <img src="/images/web-ui.png" alt="services" />
               </div>
@@ -165,7 +151,7 @@ export default function Tiles() {
               >
                 Crafting user-centered website designs to enhance engagement.
               </p>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Analytics from "../components/Analytics";
 import Tiles from "../components/Tiles";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const heroContentRef = useRef();
@@ -59,22 +60,19 @@ export const Home = () => {
                 unique needs.
               </p>
               <div className="btn-group">
-                <a
-                  href="/Portfolio"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                >
-                  <button className="btn">connect now</button>
-                </a>
-                <a
-                  href="/services"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                >
-                  <button className="secondary-btn">learn more</button>
-                </a>
+              <Link
+  to="/Portfolio"
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+>
+  <button className="btn">connect now</button>
+</Link>
+<Link
+  to="/services"
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+>
+  <button className="secondary-btn">learn more</button>
+</Link>
+
               </div>
             </div>
 
@@ -119,12 +117,13 @@ export const Home = () => {
               the digital age.
             </p>
             <div className="btn-group">
-              <a href="/contact">
+              <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                 <button className="btn">connect now</button>
-              </a>
-              <a href="/services">
+              </Link>
+              <Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+
                 <button className="secondary-btn">learn more</button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

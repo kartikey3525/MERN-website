@@ -53,7 +53,7 @@ export const Home = () => {
               <h1>Welcome to App Artistry</h1>
               {/* <p></p> */}
               <p>
-                We are the World Best IT Company , are you ready to take your
+                We are the Best IT Company , are you ready to take your
                 business to the next level with cutting-edge IT solutions? Look
                 no further! At App Artistry, we specialize in providing
                 innovative IT services and solutions tailored to meet your

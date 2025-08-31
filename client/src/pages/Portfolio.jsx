@@ -151,24 +151,22 @@ export const Portfolio = () => {
         <div className="proj-wrapper">
           <div ref={ContentRef} className="proj-content animate-left">
             <h1 className="proj-title">
-              1. <span style={{ fontSize: 35 }}>React native app</span>
+              1. <span style={{ fontSize: 35 }}>Cross-platform Driver app </span>
             </h1>
 
             <p className="proj-description">
-              This application is designed to streamline and enhance the service
-              delivery process for a service provider firm specializing in
-              various electronic services.
+            Developed a comprehensive ride-sharing ecosystem from scratch,
+            encompassing customer and driver mobile apps (50 screens each),
+             an admin panel for full operational control, and advanced features including payment processing,
+              
             </p>
             <p className="proj-description">
-              The app leverages a dynamic, cloud-based infrastructure to provide
-              a seamless user experience, from browsing available services to
-              booking them.
+            in-app communication, and driver incentive tracking. Managed the entire frontend development lifecycle,
+            ensuring seamless integration with backend APIs while adhering to best practices for security, scalability,
             </p>
             <p className="proj-description">
-              By integrating dynamic content management, a user-friendly booking
-              interface, and automated email notifications, the app
-              significantly enhances the firm's ability to serve its customers
-              effectively while maintaining up-to-date service offerings.
+            and user experience. The project was executed as a single developer, demonstrating strong self-management, 
+            multitasking, and technical versatility in a resource-constrained environment.
             </p>
 
             <div className="btn-group">
@@ -259,6 +257,60 @@ export const Portfolio = () => {
             </div>
           </div>
         </div>
+
+        <div className="proj-wrapper">
+          <div ref={ContentRef} className="proj-content animate-left">
+            <h1 className="proj-title">
+              3. <span style={{ fontSize: 35 }}>React native app</span>
+            </h1>
+
+            <p className="proj-description">
+              This application is designed to streamline and enhance the service
+              delivery process for a service provider firm specializing in
+              various electronic services.
+            </p>
+            <p className="proj-description">
+              The app leverages a dynamic, cloud-based infrastructure to provide
+              a seamless user experience, from browsing available services to
+              booking them.
+            </p>
+            <p className="proj-description">
+              By integrating dynamic content management, a user-friendly booking
+              interface, and automated email notifications, the app
+              significantly enhances the firm's ability to serve its customers
+              effectively while maintaining up-to-date service offerings.
+            </p>
+
+            <div className="btn-group">
+              <span style={{ fontSize: 25 }}> </span>
+
+              <a
+                href="https://github.com/kartikey3525/snappyserv-app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className=" ">
+                  <span style={{ fontSize: 25 }}>code</span>
+                  <i
+                    className="fab fa-github"
+                    title="GitHub"
+                    style={{ marginLeft: 10, fontSize: 25 }}
+                  ></i>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div ref={ImageRef} className="canvas-wrapper animate-right">
+            <Canvas ref={canvasRef}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[5, 5, 5]} intensity={2} />
+              {/* <OrbitControls /> */}
+              <Iphone />
+            </Canvas>
+          </div>
+        </div>
+
         <h1 className="heading2">About</h1>
 
         <p className="p">

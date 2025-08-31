@@ -70,13 +70,16 @@ export const Contact = () => {
               style={{
                 maxWidth: "300px",
                 borderRadius: "10px",
-                margin: "15px auto",
+                margin: "5px auto",
               }}
             />
             
-            <h2>{service.title}</h2>
+            <div className="service-info-text flex-direction">
+
+            <h2 style={{ marginBottom: "10px" , fontSize: "24px" }}>{service.title}</h2>
             
             <p>{service.desc}</p>
+            </div>
           </div>
         )}
 
@@ -87,12 +90,13 @@ export const Contact = () => {
 
           <section ref={ContentRef} className="section-form animate-right">
             <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="email">Email</label>
+            <div>
+                <label htmlFor="name">name</label>
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="name"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your name"
                   autoComplete="off"
                   value={data.email}
                   onChange={handleInput}
@@ -100,11 +104,25 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  autoComplete="off"
+                  value={data.email}
+                  onChange={handleInput}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="message">requirements</label>
                 <textarea
                   name="message"
                   id="message"
                   autoComplete="off"
+                  placeholder="Enter your requirements"
                   value={data.message}
                   onChange={handleInput}
                   required

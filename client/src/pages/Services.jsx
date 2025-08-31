@@ -33,7 +33,7 @@ export const Services = () => {
       description:
         "Building custom WordPress websites tailored to your business.",
       
-      image: "/images/webdev.png",
+      image: "/images/wordpress-website2.png",
     },
     {
       _id: {

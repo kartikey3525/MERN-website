@@ -12,8 +12,7 @@ export const Services = () => {
       service: "React Native App Development",
       description:
         "Building cross-platform mobile applications with React Native.",
-      price: "$2,000 - $10,000",
-      provider: "App Artistry Inc.",
+      
       image: "/images/app-dev1.jpg",
     },
     {
@@ -23,8 +22,7 @@ export const Services = () => {
       service: "React.js Website Development",
       description:
         "Creating dynamic and high-performance websites with React.js.",
-      price: "$1,500 - $8,000",
-      provider: "App Artistry Inc.",
+      
       image: "/images/website2.jpg",
     },
     {
@@ -34,8 +32,7 @@ export const Services = () => {
       service: "WordPress Website Creation",
       description:
         "Building custom WordPress websites tailored to your business.",
-      price: "$1,000 - $5,000",
-      provider: "App Artistry Inc.",
+      
       image: "/images/webdev.png",
     },
     {
@@ -45,8 +42,7 @@ export const Services = () => {
       service: "UI/UX Design for Apps",
       description:
         "Designing intuitive and visually appealing interfaces for mobile applications.",
-      price: "$1,200 - $6,000",
-      provider: "App Artistry Inc.",
+      
       image: "/images/ux.jpg",
     },
     {
@@ -56,8 +52,7 @@ export const Services = () => {
       service: "UI/UX Design for Websites",
       description:
         "Crafting user-centered website designs to enhance engagement.",
-      price: "$1,500 - $7,000",
-      provider: "App Artistry Inc.",
+      
       image: "/images/web-ui.png",
     },
   ];

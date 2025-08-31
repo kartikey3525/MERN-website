@@ -344,7 +344,8 @@ button {
   display: flex;
   flex-direction: row; /* Default is row for larger screens */
   /* justify-content: space-between; */
-  gap: 10px; /* Space between buttons */
+  gap: 280px;
+    /* Space between buttons */
   margin-top: 2rem;
 }
 
@@ -382,7 +383,7 @@ button {
   /* margin-left: 0.2rem; */
 }
 
-/***** Hero Section *****/
+/** Hero Section **/
 
 .section-hero {
   & .grid {
@@ -410,9 +411,9 @@ button {
   }
 }
 
-/***** End Hero  *****/
+/** End Hero  **/
 
-/***** analytics Section *****/
+/** analytics Section **/
 .section-analytics {
   /* padding: 40px 20px; */
   background-color: #f9f9f9;
@@ -480,7 +481,7 @@ button {
     font-size: 0.9rem;
   }
 }
-/***** End analytics Section *****/
+/** End analytics Section **/
 
 .section-contact {
   & .contact-content {
@@ -568,15 +569,15 @@ a.active {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #f9f9f9;
+      background-color: #000000;
   }
   a:hover,
   a.active {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #747bff;
   }
 }
 

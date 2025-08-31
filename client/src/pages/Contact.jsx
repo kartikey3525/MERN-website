@@ -70,13 +70,16 @@ export const Contact = () => {
               style={{
                 maxWidth: "300px",
                 borderRadius: "10px",
-                margin: "15px auto",
+                margin: "5px auto",
               }}
             />
             
-            <h2>{service.title}</h2>
+            <div className="service-info-text flex-direction">
+
+            <h2 style={{ marginBottom: "10px" , fontSize: "24px" }}>{service.title}</h2>
             
             <p>{service.desc}</p>
+            </div>
           </div>
         )}
 

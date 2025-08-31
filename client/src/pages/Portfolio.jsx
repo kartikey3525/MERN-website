@@ -157,15 +157,19 @@ export const Portfolio = () => {
             <p className="proj-description">
             Developed a comprehensive ride-sharing ecosystem from scratch,
             encompassing customer and driver mobile apps (50 screens each),
-             an admin panel for full operational control, and advanced features including payment processing,
+             an admin panel for full operational control, 
+             and advanced features including payment processing,
               
             </p>
             <p className="proj-description">
-            in-app communication, and driver incentive tracking. Managed the entire frontend development lifecycle,
-            ensuring seamless integration with backend APIs while adhering to best practices for security, scalability,
+            in-app communication, and driver incentive tracking. 
+            Managed the entire frontend development lifecycle,
+            ensuring seamless integration with backend APIs while adhering to best practices for security, 
+            scalability,
             </p>
             <p className="proj-description">
-            and user experience. The project was executed as a single developer, demonstrating strong self-management, 
+            and user experience. The project was executed as a single developer,
+             demonstrating strong self-management, 
             multitasking, and technical versatility in a resource-constrained environment.
             </p>
 

@@ -17,7 +17,7 @@ const services = [
   {
     title: "WordPress Website Creation",
     desc: "Building custom WordPress websites tailored to your business.",
-    img: "/images/webdev.png",
+    img: "/images/wordpress-website2.png",
   },
   {
     title: "UI/UX Design for Apps",

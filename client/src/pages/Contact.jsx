@@ -1,5 +1,5 @@
- 
 import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom"; // 👈 import this
 
 const defaultContactFormData = {
   email: "",
@@ -9,13 +9,15 @@ const defaultContactFormData = {
 export const Contact = () => {
   const [data, setData] = useState(defaultContactFormData);
 
+  // 👇 Correct way to get service data passed from Tiles.jsx
+  const location = useLocation();
+  const service = location.state;
+
   const ContentRef = useRef();
   const ImageRef = useRef();
 
   useEffect(() => {
-    const options = {
-      threshold: 0.1,
-    };
+    const options = { threshold: 0.1 };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -26,25 +28,19 @@ export const Contact = () => {
     }, options);
 
     const elementsToAnimate = [ContentRef.current, ImageRef.current];
-
     elementsToAnimate.forEach((element) => {
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
     return () => {
       elementsToAnimate.forEach((element) => {
-        if (element) {
-          observer.unobserve(element);
-        }
+        if (element) observer.unobserve(element);
       });
     };
   }, []);
 
   const handleInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -64,10 +60,31 @@ export const Contact = () => {
         <div className="contact-content container">
           <h1 className="main-heading">Contact Us</h1>
         </div>
+
+        {/* 👇 Show selected service if available */}
+        {service && (
+          <div className="service-info container text-center">
+            <img
+              src={service.img}
+              alt={service.title}
+              style={{
+                maxWidth: "300px",
+                borderRadius: "10px",
+                margin: "15px auto",
+              }}
+            />
+            
+            <h2>{service.title}</h2>
+            
+            <p>{service.desc}</p>
+          </div>
+        )}
+
         <div className="container grid grid-two-cols">
           <div className="contact-img animate-left" ref={ImageRef}>
             <img src="/images/support.png" alt="We are always ready to help" />
           </div>
+
           <section ref={ContentRef} className="section-form animate-right">
             <form onSubmit={handleSubmit}>
               <div>
@@ -101,10 +118,11 @@ export const Contact = () => {
             </form>
           </section>
         </div>
+
         <section className="mb-3">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d325.3331319779447!2d77.36299686102754!3d28.68008661313497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshyam%20park%20extension%20sahibabad%20ghaziabad%20pin%20code!5e0!3m2!1sen!2sin!4v1755934189960!5m2!1sen!2sin"
-             width="100%"
+            width="100%"
             height="450"
             allowFullScreen
             loading="lazy"
@@ -115,4 +133,3 @@ export const Contact = () => {
     </>
   );
 };
- 

@@ -3,7 +3,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Urbanist, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color-scheme: light dark;
+  color-scheme: dark;
+
 }
 
 :root {
@@ -565,7 +566,7 @@ a.active {
   }
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
     background-color: #ffffff;

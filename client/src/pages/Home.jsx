@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Analytics from "../components/Analytics";
 import Tiles from "../components/Tiles";
 import { Link } from "react-router-dom";
+import FAQSection from "../components/FAQSection";
 
 export const Home = () => {
   const heroContentRef = useRef();
@@ -93,7 +94,7 @@ export const Home = () => {
       <Analytics />
 
       <Tiles />
-
+      <FAQSection />
       {/* 3rd section */}
       <section className="section-hero">
         <div className="container grid grid-two-cols">

@@ -1,14 +1,13 @@
-const mongoose = require('mongoose')
-const URI = 'mongodb://localhost:27017/mern_admin'
+const mongoose = require('mongoose');
 
 const connectDb = async () => {
-    try {
-        await mongoose.connect(URI)
-        console.log('connection Successful')
-    } catch (error) {
-        console.error('connection failed')
-        process.exit(0);
-    }
-}
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('MongoDB connected successfully');
+  } catch (error) {
+    console.error('MongoDB connection failed', error);
+    process.exit(1);
+  }
+};
 
 module.exports = connectDb;

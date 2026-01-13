@@ -4,7 +4,7 @@ import "./Navbar.css";
 // import { useAuth } from "../store/auth";
 
 export const Navbar = () => {
-  // const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {

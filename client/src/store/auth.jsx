@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   const getServices = async () => {
     try {
-      const response = await fetch( `${import.meta.env.VITE_API_URL}/api//data/service`, {
+      const response = await fetch( `${import.meta.env.VITE_API_URL}/api/data/service`, {
         method: "GET",
       });
 

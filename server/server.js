@@ -10,14 +10,16 @@ const serviceRoute = require('./router/service-router');
 require("dotenv").config();     
 
 // const bcrypt = require("bcryptjs");
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
 connectDb();
 // 127.0.0.1 localhost
 const corsOptions = {
-  origin: 'http://127.0.0.1:5173',
+  origin: process.env.FRONTEND_URL,
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
+
 app.use(cors(corsOptions));
 
 // to get the json data in express app.
@@ -29,9 +31,7 @@ app.use('/api/data', serviceRoute)
 app.use(errorMiddleware)
 
 connectDb().then(() => {
-    
-app.listen(PORT,()=> {
-    console.log(`Server is running at port : ${PORT}`)
-})
-    
-})
+  app.listen(PORT, () => {
+    console.log(`Server is running at port : ${PORT}`);
+  });
+});

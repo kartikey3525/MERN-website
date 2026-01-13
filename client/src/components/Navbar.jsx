@@ -64,7 +64,7 @@ export const Navbar = () => {
                   About
                 </NavLink>
               </li>
-              {/* {isLoggedIn ? (
+              {isLoggedIn ? (
                 <li>
                   <NavLink to="/logout" activeClassName="active" onClick={closeMenu}>
                     Logout
@@ -83,7 +83,7 @@ export const Navbar = () => {
                     </NavLink>
                   </li>
                 </>
-              )} */}
+              )}
             </ul>
           </nav>
 

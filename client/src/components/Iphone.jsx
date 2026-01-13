@@ -1,76 +1,123 @@
-import React, { useRef } from 'react';
-import { RoundedBox, Plane, Box } from '@react-three/drei';
+import { Box, Plane, RoundedBox } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-export default function Iphone() {
+export default function Iphone({ videoSrc }) {
   const iphoneRef = useRef();
-  const { viewport } = useThree();
+  const videoRef = useRef(null);
+  const textureRef = useRef(null);
 
-  // Set up the video texture
-  const video = document.createElement('video');
-  video.src = '/videos/app.mp4'; // Replace with your video path
-  video.crossOrigin = 'Anonymous';
-  video.loop = true;
-  video.muted = true;
-  video.play();
+  const { viewport, camera } = useThree();
 
-  const videoTexture = new THREE.VideoTexture(video);
+  /* -------------------- CAMERA FRAME FIX (IMPROVED) -------------------- */
+  useEffect(() => {
+    camera.fov = 65;        // ⬅ more vertical room
+    camera.position.z = 11; // ⬅ compensate for large scale
+    camera.updateProjectionMatrix();
+  }, [camera]);
 
-  // Metal material for the body
-  const bodyMaterial = new THREE.MeshStandardMaterial({
-    color: '#ffffff',
-    metalness: 0.1,
-    roughness: 0.2,
-    clearcoat: 1,
-    clearcoatRoughness: 0.1,
-  });
+  /* -------------------- Video Texture -------------------- */
+  useEffect(() => {
+    const video = document.createElement('video');
+    video.src = videoSrc;
+    video.crossOrigin = 'anonymous';
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
 
-  // Glass-like material for the screen
-  const screenMaterial = new THREE.MeshPhysicalMaterial({
-    map: videoTexture,
-    metalness: 0.1,
-    roughness: 0.2,
-    clearcoat: 1,
-    clearcoatRoughness: 0.1,
-  });
+    video.play().catch(() => {});
 
-  // Responsive scaling factor based on viewport width
-  const scaleFactor = Math.min(viewport.width / 10, 1); // Scale down if viewport is narrower
+    const texture = new THREE.VideoTexture(video);
+    texture.colorSpace = THREE.SRGBColorSpace;
 
-  // Animation loop for floating effect
+    videoRef.current = video;
+    textureRef.current = texture;
+
+    return () => {
+      video.pause();
+      video.src = '';
+      texture.dispose();
+    };
+  }, [videoSrc]);
+
+  /* -------------------- BIGGER RESPONSIVE SCALE -------------------- */
+  const scaleFactor = Math.min(viewport.width / 5, 1.6);
+
+  useEffect(() => {
+    if (iphoneRef.current) {
+      iphoneRef.current.scale.setScalar(scaleFactor);
+    }
+  }, [scaleFactor]);
+
+  /* -------------------- FREE FLOAT (SCALE-AWARE) -------------------- */
   useFrame(({ clock }) => {
-    const time = clock.getElapsedTime();
-    iphoneRef.current.position.y = Math.sin(time) * 0.2; // Adjust the amplitude (0.2) for more or less floating
-    iphoneRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor); // Adjust scale dynamically
+    if (!iphoneRef.current) return;
+
+    const t = clock.getElapsedTime();
+
+    // Float scales proportionally with size
+    const floatAmplitude = 0.12 / scaleFactor;
+
+    iphoneRef.current.position.y =
+      Math.sin(t) * floatAmplitude;
   });
 
   return (
     <group ref={iphoneRef}>
-      {/* iPhone Body with Rounded Corners */}
-      <RoundedBox args={[3.6, 7, 0.3]} radius={0.2} smoothness={5} position={[0, 0, 0]} castShadow>
-        <meshStandardMaterial {...bodyMaterial} /> {/* Metal body with rounded edges */}
+      {/* Metal Chamfer Frame */}
+      <RoundedBox args={[3.7, 7.4, 0.34]} radius={0.35} smoothness={8}>
+        <meshPhysicalMaterial
+          color="#d9d9d9"
+          metalness={1}
+          roughness={0.25}
+          clearcoat={1}
+          clearcoatRoughness={0.08}
+        />
       </RoundedBox>
 
-      {/* Screen with Video */}
-      <Plane args={[3.2, 6.5]} position={[0, 0.01, 0.16]}>
-        <meshPhysicalMaterial {...screenMaterial} /> {/* Map the video as texture */}
-      </Plane>
- 
-      {/* Side Buttons - Volume Up/Down */}
-      <Box args={[0.1, 0.6, 0.1]} position={[-1.8, 1.1, 0]}>
-        <meshStandardMaterial color="#888888" /> {/* Lightened side button color */}
-      </Box>
-      
-      <Box args={[0.1, 0.6, 0.1]} position={[-1.8, 0.3, 0]}>
-        <meshStandardMaterial color="#888888" />
-      </Box>    
+      {/* Inner Body */}
+      <RoundedBox
+        args={[3.55, 7.3, 0.3]}
+        radius={0.28}
+        smoothness={8}
+        position={[0, 0, 0.01]}
+      >
+        <meshStandardMaterial
+          color="#ffffff"
+          metalness={0.15}
+          roughness={0.35}
+        />
+      </RoundedBox>
 
-      {/* Side Button - Power */}
-      <Box args={[0.1, 0.6, 0.1]} position={[1.8, 1.1, 0]}>
-        <meshStandardMaterial color="#888888" />
+     {/* Screen */}
+{textureRef.current && (
+  <Plane args={[3.1, 6.7]} position={[0, 0, 0.18]}>
+    <meshPhysicalMaterial
+      map={textureRef.current}
+      toneMapped={false}
+      roughness={5.2}
+      metalness={0}
+      clearcoat={1}
+    
+      clearcoatRoughness={0.05}
+    />
+  </Plane>
+)}
+
+
+      {/* Buttons */}
+      <Box args={[0.1, 0.7, 0.1]} position={[-1.78, 1.4, 0]}>
+        <meshStandardMaterial color="#9a9a9a" />
       </Box>
- 
+
+      <Box args={[0.1, 0.7, 0.1]} position={[-1.78, 0.5, 0]}>
+        <meshStandardMaterial color="#9a9a9a" />
+      </Box>
+
+      <Box args={[0.1, 0.7, 0.1]} position={[1.78, 1.4, 0]}>
+        <meshStandardMaterial color="#9a9a9a" />
+      </Box>
     </group>
   );
 }

@@ -1,11 +1,9 @@
-import { useEffect, useRef } from "react";
-import "../components/Portfolio.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Iphone from "../components/Iphone";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import Ipad from "../components/Ipad";
+import Iphone from "../components/Iphone";
+import "../components/Portfolio.css";
 
 export const Portfolio = () => {
   
@@ -14,7 +12,9 @@ export const Portfolio = () => {
   const ImageRef = useRef();
   const ContentRef2 = useRef();
   const ImageRef2 = useRef();
-
+  const ContentRef3 = useRef();
+  const ImageRef3 = useRef();
+  
   useEffect(() => {
     // Trailing Circle Effect
     const coords = { x: 0, y: 0 };
@@ -75,6 +75,8 @@ export const Portfolio = () => {
       ImageRef.current,
       ContentRef2.current,
       ImageRef2.current,
+      ContentRef3.current,
+      ImageRef3.current,
     ];
 
     elementsToAnimate.forEach((element) => {
@@ -151,7 +153,7 @@ export const Portfolio = () => {
         <div className="proj-wrapper">
           <div ref={ContentRef} className="proj-content animate-left">
             <h1 className="proj-title">
-              1. <span style={{ fontSize: 35 }}>Cross-platform Driver app </span>
+             <span style={{ fontSize: 35 }}>Cross-platform Driver app </span>
             </h1>
 
             <p className="proj-description">
@@ -177,7 +179,7 @@ export const Portfolio = () => {
               <span style={{ fontSize: 25 }}> </span>
 
               <a
-                href="https://github.com/kartikey3525/snappyserv-app"
+                href="https://github.com/kartikey3525/Driver-app"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -198,7 +200,8 @@ export const Portfolio = () => {
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 5, 5]} intensity={2} />
               {/* <OrbitControls /> */}
-              <Iphone />
+              <Iphone videoSrc="/videos/driver-app.mp4" />
+
             </Canvas>
           </div>
         </div>
@@ -215,7 +218,7 @@ export const Portfolio = () => {
 
           <div ref={ContentRef2} className="proj-content animate-right">
             <h1 className="proj-title">
-              2. <span style={{ fontSize: 35 }}>React website</span>
+             <span style={{ fontSize: 35 }}>MERN website</span>
             </h1>
 
             <p className="proj-description">
@@ -263,9 +266,9 @@ export const Portfolio = () => {
         </div>
 
         <div className="proj-wrapper">
-          <div ref={ContentRef} className="proj-content animate-left">
+          <div ref={ContentRef3} className="proj-content animate-left">
             <h1 className="proj-title">
-              3. <span style={{ fontSize: 35 }}>React native app</span>
+             <span style={{ fontSize: 35 }}>Service app</span>
             </h1>
 
             <p className="proj-description">
@@ -305,12 +308,14 @@ export const Portfolio = () => {
             </div>
           </div>
 
-          <div ref={ImageRef} className="canvas-wrapper animate-right">
+          <div ref={ImageRef3} className="canvas-wrapper animate-right">
             <Canvas ref={canvasRef}>
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 5, 5]} intensity={2} />
               {/* <OrbitControls /> */}
-              <Iphone />
+              <Iphone videoSrc="/videos/app.mp4" />
+
+
             </Canvas>
           </div>
         </div>
@@ -318,13 +323,9 @@ export const Portfolio = () => {
         <h1 className="heading2">About</h1>
 
         <p className="p">
-          I am currently pursuing a Bachelor of Computer Applications (BCA)
-          while working part-time and freelance projects as a React and React
-          Native software developer. Through this role, I have developed a
-          strong command of programming and gained substantial knowledge in
-          essential tools and software such as Firestore, GitHub, VS Code,
-          Figma, MongoDB, Redux, React Three Fiber (R3F), and Android Studio.
-        </p>
+        I am a React and React Native developer pursuing a Bachelor of Computer Applications (BCA), with hands-on experience building and shipping production-ready web and mobile applications. I focus on creating scalable, high-performance products using React and React Native (CLI), with strong attention to architecture, code quality, and long-term maintainability.
+
+My experience includes Redux-based state management, REST API integration, Firebase/Firestore, MongoDB, and real-time features such as live chat, push notifications, and location tracking. I routinely work on performance optimization, role-based flows, dark mode, and cross-platform stability. I also bring strong UI execution skills with Figma and React Three Fiber (R3F), and continuously explore AI integrations and modern frontend patterns to build products that scale and evolve. </p>
 
         <h1 className="heading3">Education</h1>
 
@@ -333,7 +334,7 @@ export const Portfolio = () => {
         <div className="proj-description">
           <p>
             Indira Gandhi National Open University{" "}
-            <span>(june 2022 - march 2025)</span>
+            <span>(june 2022 - march 2026)</span>
           </p>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import { useAuth } from "../store/auth";
+import { useAuth } from "../store/auth";
 
 export const Services = () => {
   // const { services } = useAuth();

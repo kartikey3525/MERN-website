@@ -13,7 +13,6 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 
 connectDb();
-// 127.0.0.1 localhost
 const corsOptions = {
   origin: process.env.FRONTEND_URL,
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",

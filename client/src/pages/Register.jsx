@@ -24,18 +24,21 @@ export const Register = () => {
   // handle form on submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-
-      const responseData = await response.json(); // Await the JSON parsing
-
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
+  
+      const responseData = await response.json();
+  
       if (response.ok) {
         toast.success("Registration successful");
         setUser({ username: "", email: "", phone: "", password: "" });
@@ -46,12 +49,14 @@ export const Register = () => {
             ? responseData.extraDetails[0]
             : responseData.message
         );
-        console.log(responseData); // Log the actual response object
+        console.log(responseData);
       }
     } catch (error) {
       console.error("Error", error);
+      toast.error("Server not reachable");
     }
   };
+  
   const ContentRef = useRef();
   const ImageRef = useRef();
 

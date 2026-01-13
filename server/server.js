@@ -15,27 +15,26 @@ const PORT = process.env.PORT || 5001;
    CORS CONFIG (LOCAL + PROD)
    ========================= */
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.FRONTEND_URL, // Netlify URL
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // allow requests like Postman or server-to-server
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      } else {
-        return callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
-    credentials: true,
-  })
-);
+   const allowedOrigins = [
+     "http://localhost:5173",
+     "https://mern-website-demo.netlify.app",
+   ];
+   
+   app.use(
+     cors({
+       origin: (origin, callback) => {
+         if (!origin) return callback(null, true);
+   
+         if (allowedOrigins.includes(origin)) {
+           callback(null, true);
+         } else {
+           callback(null, false);
+         }
+       },
+       methods: "GET,POST,PUT,DELETE,PATCH",
+     })
+   );
+   
 
 /* =========================
    MIDDLEWARES

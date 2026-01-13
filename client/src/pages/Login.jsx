@@ -9,7 +9,7 @@ export const Login = () => {
     password: "",
   });
 
-  // const { storeTokenInLS } = useAuth();
+  const { storeTokenInLS } = useAuth();
   const navigate = useNavigate();
 
   const handleInput = (e) => {

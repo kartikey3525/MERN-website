@@ -2,9 +2,9 @@ name: Deploy to Hostinger
 
 on:
   push:
-    branches:
-      - main   # change if you deploy from a different branch
-
+    branches: 
+      - main
+      - claude-updates
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

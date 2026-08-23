@@ -1,9 +1,9 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Canvas } from "@react-three/fiber";
 import { motion } from "framer-motion";
-import { Reveal, GradientText, StaggerContainer, StaggerItem } from "../components/motion";
 import Ipad from "../components/Ipad";
 import Iphone from "../components/Iphone";
+import { GradientText, Reveal, StaggerContainer, StaggerItem } from "../components/motion";
 import "./Portfolio.css";
 
 export const Portfolio = () => {
@@ -52,6 +52,7 @@ export const Portfolio = () => {
       tech: ["MongoDB", "Express", "React", "Node.js", "JWT", "Zod"],
       github: "https://github.com/kartikey3525/MERN-website",
       live: "https://mern-website-demo.netlify.app/",
+      video: "/videos/website.mp4",
       device: "ipad",
       impact: "Secure, scalable web platform for business operations"
     },
@@ -252,7 +253,7 @@ export const Portfolio = () => {
                           {project.device === "iphone" ? (
                             <Iphone videoSrc={project.video} />
                           ) : (
-                            <Ipad />
+                            <Ipad videoSrc={project.video} width={6.7} height={4.5}/>
                           )}
                         </Canvas>
                       </div>

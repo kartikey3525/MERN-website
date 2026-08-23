@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { StaggerContainer, StaggerItem } from "./motion";
 import "./Tiles.css";
 
-// ✅ Put your services in an array (DRY)
 const services = [
   {
     title: "React Native App Development",
@@ -34,43 +35,53 @@ const services = [
 export default function Tiles() {
   return (
     <section className="section-services">
-      <div className="container text-center">
-        <ul className="tiles-list">
-          {services.map((service, index) => (
-            <li key={index}>
-              <Link
-                to="/contact"
-                state={service} // 👈 Passing data to Contact
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              >
-                <div className="img-container">
-                  <img src={service.img} alt={service.title} />
-                </div>
-                <h2
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    color: "white",
-                    marginTop: "2%",
+      <div className="container">
+        <motion.h2
+          className="main-heading text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ marginBottom: 'var(--space-2xl)' }}
+        >
+          Our Services
+        </motion.h2>
+
+        <StaggerContainer staggerDelay={0.15}>
+          <ul className="tiles-list">
+            {services.map((service, index) => (
+              <StaggerItem key={index}>
+                <motion.li
+                  className="tile-card"
+                  whileHover={{
+                    y: -10,
+                    transition: { duration: 0.3 }
                   }}
                 >
-                  {service.title}
-                </h2>
-                <p
-                  style={{
-                    fontSize: "17px",
-                    textAlign: "left",
-                    color: "white",
-                    fontWeight: "200",
-                    marginTop: 0,
-                  }}
-                >
-                  {service.desc}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+                  <Link
+                    to="/contact"
+                    state={service}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  >
+                    <div className="tile-img-container">
+                      <motion.img
+                        src={service.img}
+                        alt={service.title}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      <div className="tile-overlay" />
+                    </div>
+                    <div className="tile-content">
+                      <h3>{service.title}</h3>
+                      <p>{service.desc}</p>
+                    </div>
+                  </Link>
+                </motion.li>
+              </StaggerItem>
+            ))}
+          </ul>
+        </StaggerContainer>
       </div>
     </section>
   );

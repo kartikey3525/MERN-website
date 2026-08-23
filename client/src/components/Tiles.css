@@ -1,71 +1,106 @@
-/* Tiles.css */
+/* Services Tiles Section */
+.section-services {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-primary);
+}
+
 .tiles-list {
   list-style-type: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
   justify-content: center;
 }
 
-.tiles-list li {
-  margin: 20px;
-  text-align: center;
+.tile-card {
   position: relative;
-  width: 300px;
-    /* Tile width */
-    height: 390px;
-    /* Tile height */
-  border-radius: 10px; /* Rounded corners */ 
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  background-color: rgb(0, 0, 0);
-  transition: box-shadow 0.3s ease;
-  box-shadow: 0 4px 6px rgb(248, 247, 247);
-}
- 
-.tiles-list li:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
-.tiles-list li a {
+.tile-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 40px rgba(100, 108, 255, 0.2);
+}
+
+.tile-card a {
   text-decoration: none;
-  color: black;
-  font-weight: bold;
+  color: inherit;
   display: block;
-  margin-top: 0;
+  height: 100%;
 }
 
-.tiles-list li .img-container {
-  width: 100%;
-  height: 25rem; /* Image container takes 60% of the tile height */
-  overflow: hidden;
+.tile-img-container {
   position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
 }
 
-.tiles-list li img {
-  width: 100%; /* Image covers full width of the tile */
-  height: 100%; 
-  /* Image fully occupies its container */
-  object-fit: cover; /* Ensures the image covers the space while maintaining aspect ratio */
-  transition: transform 0.3s ease; /* Smooth zoom effect */
-  margin-bottom: 0;
+.tile-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.tiles-list li:hover img {
-  transform: scale(1.1); /* Zoom image on hover */
+.tile-card:hover .tile-img-container img {
+  transform: scale(1.1);
 }
 
-.tiles-list li:hover a {
-  color: #40a8e7; /* Change text color on hover */
+.tile-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(10, 10, 10, 0.8) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.tiles-list li p {
-  font-size: 16px; /* Paragraph text size */
-  color: #666; /* Text color for paragraph */
-  /* margin-top: 10px; */
-  text-align: center;
-  font-weight:'bold';
-  padding:20px; /* Some padding for better text alignment */
-  /* height: 30%; */
-   /* Space for the paragraph content */
-  overflow: hidden; /* Ensures text doesn't overflow */
+.tile-card:hover .tile-overlay {
+  opacity: 1;
+}
+
+.tile-content {
+  padding: var(--space-lg);
+}
+
+.tile-content h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  transition: color 0.3s ease;
+}
+
+.tile-card:hover .tile-content h3 {
+  color: var(--accent-primary);
+}
+
+.tile-content p {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .tiles-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tile-img-container {
+    height: 200px;
+  }
 }

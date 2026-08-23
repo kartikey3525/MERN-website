@@ -1,15 +1,46 @@
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import "./Faq.css";
+import { Reveal } from "./motion";
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
-    <div className="faq-item">
-      <div className="faq-question" onClick={onClick}>
+    <motion.div
+      className="faq-item"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="faq-question"
+        onClick={onClick}
+        whileHover={{ x: 5 }}
+        transition={{ duration: 0.2 }}
+      >
         <h3>{question}</h3>
-        <span className={`arrow ${isOpen ? "open" : ""}`}>▼</span>
-      </div>
-      {isOpen && <div className="faq-answer"><p>{answer}</p></div>}
-    </div>
+        <motion.span
+          className="arrow"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          ▼
+        </motion.span>
+      </motion.div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="faq-answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <p>{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
@@ -17,11 +48,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleToggle = (index) => {
-    if (openIndex === index) {
-      setOpenIndex(null); // Close if the same question is clicked again
-    } else {
-      setOpenIndex(index); // Open the clicked question
-    }
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   const faqs = [
@@ -46,17 +73,23 @@ const FAQSection = () => {
   return (
     <section className="faq-section">
       <div className="container">
-        <div className="faq-header">
-          <h2>Frequently Asked Questions <span>(FAQ)</span></h2>
-          {/* <div className="faq-illustration-container"> */}
-            <img
-            src='https://kartikengitech.com/wp-content/uploads/2024/10/1-3.png'
-              // src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/assistant/7b/17/6c/7b176cb1-4d5d-480e-b662-370a95461231/3862e36c-7dcf-4e73-9db8-11fe43f9cd15/5f0e375d-5a8c-457b-a978-cdb206e22999/299b3188-49c2-45bd-8db0-943b2340714b.jpg?sv=2025-01-05&st=2025-09-02T12%3A08%3A02Z&se=2025-09-02T13%3A08%3A02Z&sr=b&sp=rade&sig=98CCNCNUSdXi50c8VLy5qhydtjDGl203CY%2FmViNWgOE%3D"
+        <Reveal>
+          <div className="faq-header">
+            <h2>
+              Frequently Asked Questions <span className="text-gradient">(FAQ)</span>
+            </h2>
+            {/* <motion.img
+              // src="https://kartikengitech.com/wp-content/uploads/2024/10/1-3.png"
               alt="FAQ Illustration"
               className="faq-illustration"
-            />
-          {/* </div> */}
-        </div>
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            /> */}
+          </div>
+        </Reveal>
+
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <FAQItem
